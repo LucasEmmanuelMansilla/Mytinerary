@@ -4,11 +4,9 @@ import Itinerario from './components/ItinerariosCiudades'
 import Inicio from './components/Inicio'
 
 
-
-function App() {
+const App=  () => {
     return ( 
-        <>   
-           
+        <>             
             <BrowserRouter> 
             <Header />
                 <Switch>  

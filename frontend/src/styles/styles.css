@@ -90,7 +90,10 @@ html * {
     color: rgb(26, 55, 151);
     font-size: 2vw;
     font-family: Titillium Web;
-    width: 80vw; 
+    width: 90vw; 
+}
+.navLink{
+    text-decoration: none;    
 }
 
 
