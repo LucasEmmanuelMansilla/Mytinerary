@@ -68,7 +68,7 @@ html * {
 }
 .textoCarrusel {
     background-color: rgb(26,61,126);
-    margin: 1vw 0;
+    margin: 2vw 0;
     color: rgb(249,246,229);
     padding: 2vw 0;
 }
@@ -90,7 +90,7 @@ html * {
     color: rgb(26, 55, 151);
     font-size: 2vw;
     font-family: Titillium Web;
-    width: 90vw; 
+    width: 80vw; 
 }
 
 
