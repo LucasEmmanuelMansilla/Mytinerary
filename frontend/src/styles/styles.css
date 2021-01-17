@@ -4,19 +4,19 @@ html * {
     box-sizing: border-box;
 }
 
-/* MENU HEADER*/
+/* ICONOS HEADER*/
 
-.textoHeader {
-    font-family: 'Ultra', serif;
-    font-size: 4vw;
+.tituloPrincipal{
+    font-family: 'Inconsolata', monospace;
+    font-size: 3vw;
     color: rgb(26,115,252) ;
     margin: 1vw 2vw;
 }
 
 .divLogos {
     justify-content: space-between;
-    padding: 1vw 2vw;
-    background-color: rgb(8, 8, 8);
+    padding: 0 2vw;
+    background-color: rgba(0, 0, 0, 0.555);
     display: flex;
 }
 
@@ -32,29 +32,28 @@ html * {
 /* BOTONES DEL MENÚ */
 .botones {
     text-decoration: none;
-    font-size: 2vw;
-    color: rgba(236, 162, 13, 0.849);
-    margin: 1vw 1vw;
+    font-size: 1.5vw;
+    color: rgba(6, 95, 107, 0.849);
+    margin: 0 1vw;
     border-radius: 1vw;
 }
 
-.botones:hover {
-    color:rgb(3, 20, 116)
+.active {   
+    border-bottom: solid rgba(6, 95, 107, 0.849) 0.1vw;
 }
 
 /* PORTADA */
 .imgCentral {
     background-size: cover;
     background-repeat: no-repeat;
-    height: 70vh;
-    display: flex;
+    height: 95vh;
     justify-content: center;
  
 }
 
 .textoPortada {
     height: 10vh;
-    color: white;
+    color: rgb(255, 255, 255);;
     text-align: center;
     width: 100%;
    
@@ -63,13 +62,14 @@ html * {
 .direccionador {
     justify-content: center;
     width: 100%;
+    height: 80%;
     display: flex;
     flex-wrap: wrap;
 }
 .lets {
     animation-name: slidein;
     animation-duration: 2s;
-    font-size: 5vw;
+    font-size: 4vw;
     padding: 3vw 0 0 0;
     font-family: 'Satisfy', cursive;
 }
@@ -87,14 +87,14 @@ html * {
     animation-duration: 2s;
     padding-top: 5vw;
     text-align: center;
-    width: 70vw;
+    width: 90vw;
     font-size: 2vw;
-    
+    font-family: 'Inconsolata', monospace;
 }
 
 @keyframes slidein {
     from {
-      margin-top: 100%;
+      margin-top: 10%;
       width: 100%
     }
   
@@ -105,11 +105,9 @@ html * {
 }
 
 .botonView {
-    animation-name: slidein;
-    animation-duration: 1s;
     width: 15vw;
     height: 10vh;
-    background-color: rgb(26,115,252);
+    background-color: rgb(36, 184, 204);
     border: none;
     color: white;
     border-radius: 2vw;
@@ -133,7 +131,6 @@ html * {
     flex-wrap:  wrap;  
 }
 
-
 .rec-arrow-right {
     margin-right: 5vw;
     
@@ -142,10 +139,18 @@ html * {
     margin-left: 5vw;
 }
 
-
 .imagen {
     display: flex;
     align-items: center;   
+    width: 35vw;
+    height: 40vh;
+    margin: 1vh 1vw;
+    border-radius: 3vw;   
+}
+
+.imagen:hover{
+    opacity: 0.7;
+    border: solid rgb(4, 26, 230) 0.5vw;
 }
 /* TÍTULO DEL CARRUSEL Y TEXTO SOBRE LAS IMÁGENES */
 .ciudades { 
@@ -156,21 +161,16 @@ html * {
     text-align: center;
     background-color: rgba(3, 28, 83, 0.527);
 }
+
 .textoCarrusel {
     text-align: center;
     font-size: 4vw;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     margin: 2vw 0;
-    color: rgb(30,118,252);
+    color: rgb(36, 184, 204, 0.849);
     padding: 2vw 0;
 }
-
 
 .navLink{
     text-decoration: none;    
 }
-
-
-
-
-

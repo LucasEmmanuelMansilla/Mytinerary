@@ -1,9 +1,11 @@
-import Menu  from './Menu'
+import BotonesNav from './BotonesNav'
+import Iconos from './Iconos'
 
 const Header = () => {
     return ( 
             <header>
-               <Menu />
+                <Iconos />
+                <BotonesNav />
             </header>   
     )
 }

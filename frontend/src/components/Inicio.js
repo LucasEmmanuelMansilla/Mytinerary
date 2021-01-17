@@ -1,12 +1,12 @@
 import Carrusel from "./Carrusel"
-import FotoPortada from "./FotoPortada"
+import PortadaInicio from "./PortadaInicio"
 
 
 
 const Inicio = () => {
     return(
         <>
-        <FotoPortada />
+        <PortadaInicio />
         <Carrusel />
         </>
     )

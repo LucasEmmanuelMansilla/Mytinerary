@@ -39,12 +39,12 @@ class Carrusel extends Component {
    const { items } = this.state
     
   return (  
-    <div className="fondoCarrusel" key="carrusel">
-    <h2 className="textoCarrusel" key="tituloCarrusel">Popular MYtineraries</h2>
-    <Carousel className="carrusel" key="carousel">
-    {items.map((ciudades) => <Ciudad ciudades={ciudades}/>)}
-    </Carousel>)
-    </div>
+      <div key="carrusel">
+        <h2 className="textoCarrusel" key="tituloCarrusel">Popular MYtineraries</h2>
+        <Carousel key="carousel">
+            {items.map((ciudades) => <Ciudad ciudades={ciudades}/>)}
+        </Carousel>)
+      </div>
   )
 }
 }
