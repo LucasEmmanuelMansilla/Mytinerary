@@ -1,13 +1,12 @@
 import Carrusel from "./Carrusel"
-import Direccionador from "./Direccionador"
-import ImgFondo from "./ImgFondo"
+import FotoPortada from "./FotoPortada"
+
 
 
 const Inicio = () => {
     return(
         <>
-        <ImgFondo />
-        <Direccionador />
+        <FotoPortada />
         <Carrusel />
         </>
     )
