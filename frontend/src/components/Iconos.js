@@ -2,7 +2,7 @@ const Iconos = () => {
     return (
         <div className="divLogos">
              <div style={{display: 'flex'}}>
-                <img src="./assets/pixlr-bg-result.png" style={{width: '6vw'}} alt="foto"/>
+                <img src="./assets/pixlr-bg-result.png" style={{width: '4vw'}} alt="foto"/>
                 <p className="tituloPrincipal">MYTINERARY</p>
             </div>
             <div style={{display: 'flex', alignItems: 'center'}}>

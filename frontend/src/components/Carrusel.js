@@ -41,7 +41,7 @@ class Carrusel extends Component {
   return (  
       <div key="carrusel">
         <h2 className="textoCarrusel" key="tituloCarrusel">Popular MYtineraries</h2>
-        <Carousel key="carousel">
+        <Carousel>
             {items.map((ciudades) => <Ciudad ciudades={ciudades}/>)}
         </Carousel>)
       </div>

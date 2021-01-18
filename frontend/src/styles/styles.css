@@ -8,7 +8,7 @@ html * {
 
 .tituloPrincipal{
     font-family: 'Inconsolata', monospace;
-    font-size: 3vw;
+    font-size: 2vw;
     color: rgb(26,115,252) ;
     margin: 1vw 2vw;
 }
@@ -33,13 +33,14 @@ html * {
 .botones {
     text-decoration: none;
     font-size: 1.5vw;
-    color: rgba(6, 95, 107, 0.849);
+    color:white;
     margin: 0 1vw;
     border-radius: 1vw;
+    padding-left: 1vw;
 }
 
 .active {   
-    border-bottom: solid rgba(6, 95, 107, 0.849) 0.1vw;
+    border-bottom: solid white 0.1vw;
 }
 
 /* PORTADA */
