@@ -1,4 +1,4 @@
-const Ciudad = ({ciudades}) =>{
+const CiudadCarrusel = ({ciudades}) =>{
         return(
         ciudades.map(slides => {
             const ciudad = require(`../assets/${slides.url}`)
@@ -7,12 +7,12 @@ const Ciudad = ({ciudades}) =>{
                         <div key={slides.id} style={{
                                     backgroundImage: `url(${ciudad.default})`,
                                     backgroundSize: 'cover',     
-                                    }} className="imagen">
-                            <p className="ciudades">{slides.ciudad}</p>
+                                    }} className="imagenCarrusel">
+                            <p className="ciudadesCarrusel" key={slides.ciudad}>{slides.ciudad}</p>
                         </div>)                  
     }  
     ) 
     )
 }
          
-    export default Ciudad
+    export default CiudadCarrusel
