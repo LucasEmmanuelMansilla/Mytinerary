@@ -7,7 +7,7 @@ const PortadaInicio = () => {
     return(
         <>
             <div className= "imgCentral" style={{
-                backgroundImage: 'url("./assets/1582318987_encuentros_viajeros_barcelona_2_.jpg")',
+                backgroundImage: 'url("./assets/Turismo.jpg")',
                 backgroundAttachment: 'fixed',
                 backgroundSize: 'cover',
                 }}>

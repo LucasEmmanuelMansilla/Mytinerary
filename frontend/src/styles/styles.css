@@ -54,10 +54,10 @@ html * {
 
 .textoPortada {
     height: 10vh;
-    color: rgb(255, 255, 255);;
+    color: white;
     text-align: center;
     width: 100%;
-   
+    text-shadow: rgb(31, 101, 129) 3px 4px;  
 }
 
 .direccionador {

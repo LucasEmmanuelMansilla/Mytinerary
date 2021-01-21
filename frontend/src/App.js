@@ -1,7 +1,7 @@
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import Itinerarios from './components/Itinerarios'
 import Inicio from './components/Inicio'
-import { Itinerario } from './components/Itinerario'
+import { Itinerario } from './components/ItinerarioIndividual'
 
 
 const App=  () => {
