@@ -10,12 +10,12 @@ export const Itinerario = (props) => {
     const [city, setCity] = useState([])
 
   
-const id = parseInt(props.match.params.itinerary) 
+const id = props.match.params.itinerary
 
     useEffect(() => {            
         fetch ('http://localhost:4000/api/city/'+id)
           .then(res => res.json())
-          .then(data => setCity(data.res))  
+          .then(data => setCity(data.respuesta))  
   
     }, [id])
   

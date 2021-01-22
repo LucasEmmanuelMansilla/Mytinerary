@@ -39,7 +39,8 @@ class Carrusel extends Component {
    const { items } = this.state
     
   return (  
-      <div key="carrusel" >
+      <div key="carrusel" style={{backgroundColor: '#DBEAEC'}}>
+        <h2>Choose your</h2>
         <h2 className="textoCarrusel" key="tituloCarrusel">Popular MYtineraries</h2>
         <Carousel>
             {items.map((ciudades) => <CiudadCarrusel ciudades={ciudades}/>)}

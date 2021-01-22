@@ -5,20 +5,19 @@ import { Filtro } from './Filtro'
 
 //COMPONENTE QUE RENDERIZA LAS CIUDADES Y DEFINE LA RUTA DEL NAVEGADOR
 export const CiudadItinerario = () => {
-
-
+    
     const [filtro, setFiltro] = useState([])
    
     const filtrado = (e) => {
-        setFiltro(e.target.value.toLowerCase())
+        setFiltro(e.target.value.toLowerCase().trim())
     }
 
     const [ciudadesIt, setCiudadesIt] = useState([])
 
     useEffect(() => {
-        fetch ('http://localhost:4000/api/cities')
+        fetch('http://localhost:4000/api/cities')
           .then(res => res.json())
-          .then(data => setCiudadesIt(data.respuesta))
+          .then(data => setCiudadesIt(data.res))
     }, [])
 
    //EL LINK PLASMADO DE ESA MANERA VUELVE LA RUTA DINÁMICA, AL TOMAR UN VALOR DEPENDIENDO DEL
@@ -26,11 +25,11 @@ export const CiudadItinerario = () => {
    //PARA SABER QUE CIUDAD DEBE RENDERIZAR 
 
     return (  
-        <>    
-        <Filtro filtrado={filtrado}/>
-        <div key="ciudadIt" style={{height: '100vw'}}>
+        <>  
+        <div style={{display: 'flex', justifyContent: 'center'}}><Filtro filtrado={filtrado}/></div> 
+        <div key="ciudadIt" style={{display: 'flex', flexWrap: 'wrap'}}>
             {ciudadesIt.map(({name, url, _id, index}) => {
-                if(name.toLowerCase().indexOf(filtro) === 0){
+                if(name.toLowerCase().startsWith(filtro, 0) === true){
                     return (
                             <Link to={`/itineraries/${_id}`} key={_id} style={{textDecoration: 'none'}}>
                                 <button className="botonItinerario" style={{backgroundImage: `url(${url})`}}>
@@ -39,12 +38,9 @@ export const CiudadItinerario = () => {
                             </Link> 
                     )
                 }else  {
-                   return(
-                    null
-                   )
-                      
-                }                          
-        } )
+                   return(null)
+                      }                          
+        })
         }
         </div>
         </>

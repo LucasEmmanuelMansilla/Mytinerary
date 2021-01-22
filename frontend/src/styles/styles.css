@@ -9,7 +9,7 @@ html * {
 .tituloPrincipal{
     font-family: 'Inconsolata', monospace;
     font-size: 2vw;
-    color: rgb(26,115,252) ;
+    color: white;
     margin: 1vw 2vw;
 }
 
@@ -150,10 +150,9 @@ html * {
 }
 
 .imagenCarrusel:hover{
-    opacity: 0.7;
-    border: solid rgb(11, 105, 133) 0.5vw;
+    opacity: 0.9;
 }
-/* TÍTULO DEL CARRUSEL Y TEXTO SOBRE LAS IMÁGENES */
+/* TÍTULO DEL CARRUSEL Y TEXTO SOBRE LAS IMÁGENES DE LAS CIUDADES */
 .ciudadesCarrusel,
 .ciudadesItinerario { 
     color: white;
@@ -169,23 +168,31 @@ html * {
     font-size: 4vw;
     font-family: 'Poppins', sans-serif;
     
-    color: rgb(36, 184, 204, 0.849);
+    color: black;
     padding: 2vw 0;
 }
-
+/* NAV LINK GLOBAL */
 .navLink{
     text-decoration: none;    
 }
-
-
+/* IMÁGENES DEL ITINERARIO */
 .botonItinerario{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 5vh 7vw;
-    width: 85vw;
-    height: 40vh;
+    width: 35vw;
+    height: 35vh;
     background-size: cover;
     background-position: 0 50%;
     border: none;
+}
+
+
+/* FILTRO */
+
+input {
+    text-align: center;
+    border: none;
+    width: 50vw;
+    height: 5vh;
+    margin-left: 5vw;
+    font-size: 1.5vw;
 }
