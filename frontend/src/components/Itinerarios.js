@@ -3,10 +3,9 @@ import Header from "./Header"
 
 const Itinerarios = () =>{
 return(
-    <div style={{ backgroundColor: 'rgb(1,131,139)',}}>
+    <div className="paginaCities">
         <Header />
-       <CiudadItinerario />
-        
+       <CiudadItinerario />    
     </div>
 )
 
