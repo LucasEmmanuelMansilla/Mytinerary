@@ -163,7 +163,8 @@ div.carrusel{
 }
 /* TÍTULO DEL CARRUSEL Y TEXTO SOBRE LAS IMÁGENES DE LAS CIUDADES */
 .ciudadesCarrusel,
-.ciudadesItinerario { 
+.ciudadesItinerario, 
+h4.sinItinerario { 
     color: white;
     font-size: 4vw;
     font-family: 'Fjalla One', sans-serif;
@@ -171,6 +172,7 @@ div.carrusel{
     text-align: center;
     background-color: rgba(3, 28, 83, 0.527);
 }
+
 
 .tituloCarrusel, div.cities {
     text-align: center;
@@ -196,12 +198,13 @@ h2.subtituloCarrusel {
     background-size: cover;
     background-position: 0 50%;
     border: none;
-    filter: drop-shadow(-4vw 2vw 5vw black);
+    border-collapse: collapse;
+    filter: drop-shadow(4vw 3vw 2vw rgb(0, 0, 0));
 }
 
 .botonItinerario:hover{
     transform: scale(1.3);
-    transition-duration: 0.5s;   
+    transition-duration: 1s;   
     
 }
 
@@ -226,23 +229,38 @@ input {
 
 
 
-div.filtro{
-    border: none;
-    margin-top: 2vw;
-}
-
-div.CiudadIt{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-}
+/* ITINERARIO INDIVIDUAL */
 
 div.imagenIndividual{
     display: flex;
+    margin-top: 2vw;
     align-items: center;
-    height: 50vh;
+    height: 55vh;
     background-size: cover;
     background-position: 0 50%;
 }
 
-   
+div.noItinerario {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-size: cover;
+    height: 50vh;
+    background-position: 0 60%;
+}
+
+div.noItinerarioBotones {
+    display: flex;
+    margin: 3vh 0 0 2vw;
+    justify-content: center;
+    font-size: 3vw;    
+}
+
+.ciudad {
+    color: black;
+}
+
+
+h4.sinItinerario {
+    background-color: black;
+}

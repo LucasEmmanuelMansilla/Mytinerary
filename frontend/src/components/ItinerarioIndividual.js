@@ -10,8 +10,7 @@ export const Itinerario = (props) => {
     
     const [city, setCity] = useState([])
 
-  
-const id = props.match.params.itinerary
+    const id = props.match.params.itinerary
 
     useEffect(() => {            
         fetch ('http://localhost:4000/api/city/'+id)
@@ -24,11 +23,17 @@ return (
      <div key="itinerarie">                    
                 <>
                     <Header />
-                    <div>
-                        <div className="imagenIndividual" style={{backgroundImage: `url(${city.url})`}}>
-                            <p className="ciudadesItinerario" key={city._id} >{city.name}</p>
-                        </div> 
-                        <Link to="/">Home</Link>
+                    <div>               
+                        <div className="noItinerario" style={{backgroundImage: `url(${city.url})`}}>
+                             <h4 className="sinItinerario">City ​​without itineraries yet. Create yours!</h4>
+                        </div>
+                        <div className="noItinerarioBotones" > 
+                            <Link to="/" className="navLink ciudad"><i className="fas fa-home"></i>Home</Link>
+                            <Link to="/cities" style={{display: 'flex', alignItems: 'center', margin:'0 0 0 6vw'}} className="navLink ciudad">
+                                <img src="../assets/32170.png" style={{ width: '3vw', margin: '0 1vw 0 0'}}/>
+                                <p>Back to cities</p>
+                            </Link>
+                        </div>                   
                     </div> 
                  </>
                    

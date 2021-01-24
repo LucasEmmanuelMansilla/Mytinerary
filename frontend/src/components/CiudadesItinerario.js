@@ -26,7 +26,6 @@ export const CiudadItinerario = () => {
    //BOTÓN AL QUE SE LE HAGA CLICK. DE ESTA MANERA EL ITINERARIO INDIVIDUAL PUEDE SERVIRSE DE ESE NÚMERO
    //PARA SABER QUE CIUDAD DEBE RENDERIZAR 
 
-   console.log(CiudadFiltrada)
    if(filtro.length > 0){
             return(
         <>
