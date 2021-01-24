@@ -44,7 +44,7 @@ class Carrusel extends Component {
         <h2 className="tituloCarrusel" key="tituloCarrusel">Popular MYtineraries</h2>
         <Carousel>
             {items.map((ciudades) => <CiudadCarrusel ciudades={ciudades}/>)}
-        </Carousel>)
+        </Carousel>
       </div>
   )
 }

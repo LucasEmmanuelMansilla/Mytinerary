@@ -35,6 +35,9 @@ const cityController = {
         .then(data => {
             res.json({success: true, respuesta: data})
         })
+        .catch(error => {
+            return res.json({success: false, error: error})
+        })
         
 
     }

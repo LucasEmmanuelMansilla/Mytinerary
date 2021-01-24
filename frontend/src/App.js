@@ -3,7 +3,6 @@ import Itinerarios from './components/Itinerarios'
 import Inicio from './components/Inicio'
 import { Itinerario } from './components/ItinerarioIndividual'
 
-
 const App=  () => {
     return ( 
         <>             
@@ -13,7 +12,7 @@ const App=  () => {
                     <Route path="/cities" component={Itinerarios} />
                     <Route path="/itineraries/:itinerary" component={Itinerario} />
                     <Redirect to="/" />
-                </Switch>     
+                </Switch>            
             </BrowserRouter>
         </>  
     )
