@@ -1,3 +1,5 @@
+//TODOS LOS ÍCONOS DEL HEADER, INCLUSO EL LOGO
+
 const Iconos = () => {
     return (
         <div className="divLogos">

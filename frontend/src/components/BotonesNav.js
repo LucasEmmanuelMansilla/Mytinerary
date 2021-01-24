@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
+//BOTONES DE HOME Y CITIES
 
 const BotonesNav = () => {
     return(         

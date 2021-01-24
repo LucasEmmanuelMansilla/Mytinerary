@@ -4,7 +4,7 @@ import Carousel from 'react-elastic-carousel';
 import CiudadCarrusel from './CiudadCarrusel';
 import '../styles/styles.css'
 
-
+//CARRUSEL COMPLETO
 class Carrusel extends Component {
   
   state = {
@@ -34,7 +34,7 @@ class Carrusel extends Component {
   }
 
 
-    
+  //MAPEA Y RENDERIZA EL CARRUSEL CON LOS DATOS QUE RECIBE DEL COMPONENTE CIUDADCARRUSEL
   render () { 
    const { items } = this.state
     

@@ -1,3 +1,6 @@
+
+//MAPEA EL EL ARRAY DE ARRAY CON LAS CIUDADES Y LAS DEVUELVE AL CARRUSEL
+
 const CiudadCarrusel = ({ciudades}) =>{
         return(
         ciudades.map(slides => {
