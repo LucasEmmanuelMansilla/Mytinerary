@@ -4,35 +4,34 @@ import '../styles/styles.css'
 import { CiudadFiltrada } from './CiudadFiltrada'
 import { Filtro } from './Filtro'
 import { Preloader } from './Preloader'
-
+import { connect } from 'react-redux'
+import citiesActions from '../redux/actions/citiesActions'
 
 //COMPONENTE PRINCIPAL DE LA PÁGINA "CITIES"
-export const CiudadItinerario = () => {
+const CiudadesItinerario = (props) => {
     //CAPTURAN EL VALOR INGRESADO POR EL USUARIO EN EL FILTRO
-    const [filtro, setFiltro] = useState([])
-   
+    const [filtro, setFiltro] = useState("")
+    
+        //CAPTURA LAS PROPS
+    const { totalCities, listaCities } = props
+   useEffect(() => {
+       totalCities()
+   }, [totalCities])
+
     const filtrado = (e) => {
         setFiltro(e.target.value.toLowerCase().trim())
-    }
-    //TOMA LO QUE LE ENVÍA EL BACK PARA PODER MAPEAR Y OBTENES LOS DATOS QUE NECESITA
-    const [ciudadesIt, setCiudadesIt] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:4000/api/cities')
-          .then(res => res.json())
-          .then(data => setCiudadesIt(data.res))
-    }, [])
-
+    }   
+  
 //SI EL FILTRO ESTÁ ACTIVADO, DEVUELVE SOLO LA CIUDAD ENCONTRADA, O UN CARTEL QUE DICE QUE NO HAY CIUDADES
    if(filtro.length > 0){
             return(
         <>
             <div className="cities">CITIES</div>
             <div style={{display: 'flex', justifyContent: 'center',}}><Filtro filtrado={filtrado}/></div>
-            <CiudadFiltrada filtro={filtro} ciudadesIt={ciudadesIt}/>
+            <CiudadFiltrada filtro={filtro} ciudadesIt={listaCities}/>
         </>
        )}else{
-            if(ciudadesIt.length === 0){
+            if(listaCities.length === 0){
                 return  <Preloader />
                 }else{
                     return(
@@ -40,7 +39,7 @@ export const CiudadItinerario = () => {
                             <div className="cities">CITIES</div>
                             <div style={{display: 'flex', justifyContent: 'center',}}><Filtro filtrado={filtrado}/></div>
                             <div key="ciudadIt">
-                                {ciudadesIt.map(({name, url, _id}) => {      
+                                {listaCities.map(({name, url, _id}) => {      
                                     return(
                                         <Link to={`/itineraries/${_id}`} key={_id} style={{textDecoration: 'none',}}>
                                             <button className="botonItinerario" style={{backgroundImage: `url(${url})`}}>
@@ -51,17 +50,28 @@ export const CiudadItinerario = () => {
                                 })
                              }
                             </div>
-                    </>
+                        </>
                     )
-                }
-                
-   }
+                }             
+            }
 }
+
+const mapDispatchToProps = {  
+     totalCities: citiesActions.totalCities   
+}
+
+const mapStateToProps = state => {
+    return {
+        listaCities: state.cities
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CiudadesItinerario)
 
    //EL LINK PLASMADO DE ESA MANERA VUELVE LA RUTA DINÁMICA, AL TOMAR UN VALOR DEPENDIENDO DEL
    //BOTÓN AL QUE SE LE HAGA CLICK. DE ESTA MANERA EL ITINERARIO INDIVIDUAL PUEDE SERVIRSE DE ESE NÚMERO
    //PARA SABER QUE CIUDAD DEBE RENDERIZAR
-
+//SE DEBE CARGAR UNA ACTION DE REDUX PORQUE O SINO EL STATE NUNCA SE ACTUALIZA
 
             
            

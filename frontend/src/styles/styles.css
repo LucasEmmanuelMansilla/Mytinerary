@@ -204,8 +204,8 @@ h2.subtituloCarrusel {
 
 .botonItinerario:hover{
     transform: scale(1.3);
-    transition-duration: 1.5s;   
-    
+    transition-duration: 0.5s;
+
 }
 
 

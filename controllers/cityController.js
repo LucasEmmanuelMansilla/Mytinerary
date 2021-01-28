@@ -5,8 +5,8 @@ const cityController = {
     addCity: (req, res) => {
         const {name, url} = req.body
         const cityAGrabar = new City({
-            name: name,
-            url: url
+            name,
+            url
         })
        cityAGrabar.save()
        .then(cityGrabada => {
@@ -25,7 +25,7 @@ const cityController = {
             return res.json({success: true, res: data})
         })
         .catch(error => {
-            return res.json({success: false, error: error})
+            return res.json({success: false, error})
         })
     },
     
@@ -36,7 +36,7 @@ const cityController = {
             res.json({success: true, respuesta: data})
         })
         .catch(error => {
-            return res.json({success: false, error: error})
+            return res.json({success: false, error})
         })
         
 

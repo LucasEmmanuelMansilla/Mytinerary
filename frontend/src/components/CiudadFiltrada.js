@@ -6,14 +6,11 @@ export const CiudadFiltrada = ({filtro, ciudadesIt}) => {
     
     const [ciudadEncontrada, setCiudadEncontrada] = useState([])
     
-    
     useEffect(() => {
         if(filtro){
             setCiudadEncontrada(ciudadesIt.filter(ciudad => ciudad.name.toLowerCase().indexOf(filtro, 0) === 0))      
         }
     }, [ciudadesIt,  filtro])
-
-
 
     if(ciudadEncontrada.length === 0){
         return <CiudadNoEncontrada />
