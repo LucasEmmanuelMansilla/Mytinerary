@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CiudadNoEncontrada } from './CiudadNoEncontrada'
+import {connect} from 'react-redux'
 
-export const CiudadFiltrada = ({filtro, ciudadesIt}) => {
+const CiudadFiltrada = (props) => {
     
     const [ciudadEncontrada, setCiudadEncontrada] = useState([])
-    
+    const {citiesFiltradas} = props
     useEffect(() => {
-        if(filtro){
-            setCiudadEncontrada(ciudadesIt.filter(ciudad => ciudad.name.toLowerCase().indexOf(filtro, 0) === 0))      
-        }
-    }, [ciudadesIt,  filtro])
+        setCiudadEncontrada(citiesFiltradas)
+    }, [citiesFiltradas])
 
     if(ciudadEncontrada.length === 0){
         return <CiudadNoEncontrada />
     }else{
-        return(
+        return( 
             <>
                 <div>
                    {ciudadEncontrada.map(({name, url, _id}) =>{               
@@ -34,3 +33,12 @@ export const CiudadFiltrada = ({filtro, ciudadesIt}) => {
     }
        
 }
+
+const mapStateToProps = state => {
+    return {
+        citiesFiltradas: state.citiesFiltradas
+    }
+}
+
+
+export default connect(mapStateToProps)(CiudadFiltrada)

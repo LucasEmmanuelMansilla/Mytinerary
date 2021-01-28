@@ -1,6 +1,6 @@
 const initialState = {
     cities: [],
-    cityIndividual: []
+    citiesFiltradas: []
 }
 
 export const citiesReducer = (state = initialState, action) => {
@@ -10,11 +10,11 @@ export const citiesReducer = (state = initialState, action) => {
             ...state,
             cities: action.payload
         }
-        case 'CIUDAD_INDIVIDUAL':
-            return{
-                ...state,
-                cityIndividual:  action.payload 
-            }
+       case 'FILTER_CITIES':
+           return{
+               ...state,
+                citiesFiltradas: state.cities.filter(ciudades => ciudades.name.toLowerCase().indexOf(action.payload, 0) === 0)
+           }
         default:
             return state
 

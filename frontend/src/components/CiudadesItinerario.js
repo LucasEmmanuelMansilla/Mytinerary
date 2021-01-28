@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/styles.css'
-import { CiudadFiltrada } from './CiudadFiltrada'
-import { Filtro } from './Filtro'
+import  CiudadFiltrada  from './CiudadFiltrada'
 import { Preloader } from './Preloader'
 import { connect } from 'react-redux'
 import citiesActions from '../redux/actions/citiesActions'
@@ -11,13 +10,15 @@ import citiesActions from '../redux/actions/citiesActions'
 const CiudadesItinerario = (props) => {
     //CAPTURAN EL VALOR INGRESADO POR EL USUARIO EN EL FILTRO
     const [filtro, setFiltro] = useState("")
-    
-        //CAPTURA LAS PROPS
-    const { totalCities, listaCities } = props
-   useEffect(() => {
-       totalCities()
-   }, [totalCities])
 
+        //CAPTURA LAS PROPS
+    const { totalCities, listaCities, filtroCities } = props
+   
+   useEffect(() => {
+       filtroCities(filtro)
+       totalCities()
+   }, [totalCities, filtro, filtroCities])
+   
     const filtrado = (e) => {
         setFiltro(e.target.value.toLowerCase().trim())
     }   
@@ -27,8 +28,12 @@ const CiudadesItinerario = (props) => {
             return(
         <>
             <div className="cities">CITIES</div>
-            <div style={{display: 'flex', justifyContent: 'center',}}><Filtro filtrado={filtrado}/></div>
-            <CiudadFiltrada filtro={filtro} ciudadesIt={listaCities}/>
+            <div style={{display: 'flex', justifyContent: 'center',}}>
+                <div className="filtro">
+                    <input onChange={filtrado} type="text" name="filtro" autoComplete="off" placeholder="Search city by name"/>
+                </div>
+            </div>
+            <CiudadFiltrada />
         </>
        )}else{
             if(listaCities.length === 0){
@@ -37,7 +42,11 @@ const CiudadesItinerario = (props) => {
                     return(
                         <>
                             <div className="cities">CITIES</div>
-                            <div style={{display: 'flex', justifyContent: 'center',}}><Filtro filtrado={filtrado}/></div>
+                            <div style={{display: 'flex', justifyContent: 'center',}}> 
+                                <div className="filtro">       
+                                    <input onChange={filtrado} type="text" name="filtro" autoComplete="off" placeholder="Search city by name"/>
+                                </div>
+                            </div>
                             <div key="ciudadIt">
                                 {listaCities.map(({name, url, _id}) => {      
                                     return(
@@ -57,12 +66,13 @@ const CiudadesItinerario = (props) => {
 }
 
 const mapDispatchToProps = {  
-     totalCities: citiesActions.totalCities   
+     totalCities: citiesActions.totalCities,   
+     filtroCities: citiesActions.filterCities
 }
 
 const mapStateToProps = state => {
     return {
-        listaCities: state.cities
+        listaCities: state.cities,
     }
 }
 
