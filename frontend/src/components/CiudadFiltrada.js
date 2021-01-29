@@ -30,8 +30,7 @@ const CiudadFiltrada = (props) => {
                 </div>
             </>       
         )
-    }
-       
+    }       
 }
 
 const mapStateToProps = state => {

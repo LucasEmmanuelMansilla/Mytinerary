@@ -10,10 +10,9 @@ import citiesActions from '../redux/actions/citiesActions'
 const CiudadesItinerario = (props) => {
     //CAPTURAN EL VALOR INGRESADO POR EL USUARIO EN EL FILTRO
     const [filtro, setFiltro] = useState("")
-
         //CAPTURA LAS PROPS
     const { totalCities, listaCities, filtroCities } = props
-   
+   //LLAMA A LAS ACTIONS DE REDUX 
    useEffect(() => {
        filtroCities(filtro)
        totalCities()
@@ -22,7 +21,7 @@ const CiudadesItinerario = (props) => {
     const filtrado = (e) => {
         setFiltro(e.target.value.toLowerCase().trim())
     }   
-  
+ 
 //SI EL FILTRO ESTÁ ACTIVADO, DEVUELVE SOLO LA CIUDAD ENCONTRADA, O UN CARTEL QUE DICE QUE NO HAY CIUDADES
    if(filtro.length > 0){
             return(
