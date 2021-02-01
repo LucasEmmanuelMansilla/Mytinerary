@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/styles.css'
-import  CiudadFiltrada  from './CiudadFiltrada'
+import  CiudadesFiltradas  from './CiudadesFiltradas'
 import { Preloader } from './Preloader'
 import { connect } from 'react-redux'
 import citiesActions from '../redux/actions/citiesActions'
 
 //COMPONENTE PRINCIPAL DE LA PÁGINA "CITIES"
-const CiudadesItinerario = (props) => {
+const Ciudades = (props) => {
     //CAPTURAN EL VALOR INGRESADO POR EL USUARIO EN EL FILTRO
     const [filtro, setFiltro] = useState("")
         //CAPTURA LAS PROPS
-    const { totalCities, listaCities, filtroCities } = props
+    const { totalCities, listaCities, filtroCities, } = props
    //LLAMA A LAS ACTIONS DE REDUX 
    useEffect(() => {
        filtroCities(filtro)
-       totalCities()
+       totalCities()     
    }, [totalCities, filtro, filtroCities])
    
     const filtrado = (e) => {
@@ -32,7 +32,7 @@ const CiudadesItinerario = (props) => {
                     <input onChange={filtrado} type="text" name="filtro" autoComplete="off" placeholder="Search city by name"/>
                 </div>
             </div>
-            <CiudadFiltrada />
+            <CiudadesFiltradas />
         </>
        )}else{
             if(listaCities.length === 0){
@@ -66,16 +66,16 @@ const CiudadesItinerario = (props) => {
 
 const mapDispatchToProps = {  
      totalCities: citiesActions.totalCities,   
-     filtroCities: citiesActions.filterCities
+     filtroCities: citiesActions.filterCities,
 }
 
 const mapStateToProps = state => {
     return {
-        listaCities: state.cities,
+        listaCities: state.citiesR.cities,
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CiudadesItinerario)
+export default connect(mapStateToProps, mapDispatchToProps)(Ciudades)
 
    //EL LINK PLASMADO DE ESA MANERA VUELVE LA RUTA DINÁMICA, AL TOMAR UN VALOR DEPENDIENDO DEL
    //BOTÓN AL QUE SE LE HAGA CLICK. DE ESTA MANERA EL ITINERARIO INDIVIDUAL PUEDE SERVIRSE DE ESE NÚMERO

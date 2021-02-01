@@ -1,7 +1,7 @@
 
 //MAPEA EL EL ARRAY DE ARRAY CON LAS CIUDADES Y LAS DEVUELVE AL CARRUSEL
 
-const CiudadCarrusel = ({ciudades}) =>{
+const CiudadesCarrusel = ({ciudades}) =>{
         return(
         ciudades.map(slides => {
             const ciudad = require(`../assets/${slides.url}`)
@@ -18,4 +18,4 @@ const CiudadCarrusel = ({ciudades}) =>{
     )
 }
          
-    export default CiudadCarrusel
+    export default CiudadesCarrusel

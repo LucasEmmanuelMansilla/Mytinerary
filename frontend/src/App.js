@@ -1,7 +1,7 @@
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
-import Itinerarios from './components/Itinerarios'
 import Inicio from './components/Inicio'
-import  Itinerario  from './components/ItinerarioIndividual'
+import  Ciudad  from './components/Ciudad'
+import CiudadesARenderizar from './components/CiudadesARenderizar';
 
 const App=  () => {
     return ( 
@@ -9,8 +9,8 @@ const App=  () => {
             <BrowserRouter> 
                 <Switch>  
                     <Route exact path="/" component= {Inicio} />
-                    <Route path="/cities" component={Itinerarios} />
-                    <Route path="/itineraries/:itinerary" component={Itinerario} />
+                    <Route path="/cities" component={CiudadesARenderizar} />
+                    <Route path="/itineraries/:itinerary" component={Ciudad} />
                     <Redirect to="/" />
                 </Switch>            
             </BrowserRouter>

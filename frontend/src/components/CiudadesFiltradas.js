@@ -35,7 +35,7 @@ const CiudadFiltrada = (props) => {
 
 const mapStateToProps = state => {
     return {
-        citiesFiltradas: state.citiesFiltradas
+        citiesFiltradas: state.citiesR.citiesFiltradas
     }
 }
 

@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import Carousel from 'react-elastic-carousel';
-import CiudadCarrusel from './CiudadCarrusel';
+import CiudadesCarrusel from './CiudadesCarrusel';
 import '../styles/styles.css'
 
 //CARRUSEL COMPLETO
@@ -43,7 +43,7 @@ class Carrusel extends Component {
         <h2 className="subtituloCarrusel" key="subTitulo">Choose your</h2>
         <h2 className="tituloCarrusel" key="tituloCarrusel">Popular MYtineraries</h2>
         <Carousel key="key">
-            {items.map((ciudades) => <CiudadCarrusel ciudades={ciudades}/>)}
+            {items.map((ciudades) => <CiudadesCarrusel ciudades={ciudades}/>)}
         </Carousel>
       </div>
   )

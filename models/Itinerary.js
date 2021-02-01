@@ -2,11 +2,12 @@ const mongoose = require('mongoose')
 
 
 const itineraryScheema = new mongoose.Schema({
-    timestamps: { currentTime: () => Math.floor(Date.now() / 1000) },
+    time : {type: Date, default: Date.now
+ } ,
    itineraryTitle: {type: String, required: true},
    userItinerary: {type: String, required: true},
    photoUser: {type: String, required: true},
-   likes: {type: Number, required: false, default: 0},
+   likes: {type: Number, default: 0},
    hours: {type: Number, required: true},
    price: {type: Number, required: true},
    hashtag: [""],
