@@ -16,7 +16,10 @@ router.route('/itineraries/:id')
 .get(itineraryController.itineraries)
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 80530cf9c74f467d20ce57c6506f69b295f4b90c
 
 
 module.exports = router

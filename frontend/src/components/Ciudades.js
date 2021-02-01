@@ -17,7 +17,10 @@ const Ciudades = (props) => {
    useEffect(() => {
        filtroCities(filtro)
        totalCities()     
+<<<<<<< HEAD:frontend/src/components/Ciudades.js
        window.scrollTo(0, 0)
+=======
+>>>>>>> 80530cf9c74f467d20ce57c6506f69b295f4b90c:frontend/src/components/CiudadesItinerario.js
    }, [totalCities, filtro, filtroCities])
    
     const filtrado = (e) => {
@@ -34,8 +37,14 @@ const Ciudades = (props) => {
                     <   input onChange={filtrado} type="text" name="filtro" autoComplete="off" placeholder="Search city by name"/>
                     </div>
                 </div>
+<<<<<<< HEAD:frontend/src/components/Ciudades.js
                 <CiudadesFiltradas />       
             </>
+=======
+            </div>
+            <CiudadesFiltradas />
+        </>
+>>>>>>> 80530cf9c74f467d20ce57c6506f69b295f4b90c:frontend/src/components/CiudadesItinerario.js
        )}else{
             if(listaCities.length === 0){
                 return  <Preloader />
