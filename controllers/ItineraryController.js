@@ -1,4 +1,3 @@
-const City = require('../models/City')
 const Itinerary = require('../models/Itinerary')
 
 const itineraryController = {
@@ -26,8 +25,13 @@ const itineraryController = {
         .catch(error => {
             return res.json({success: false, error})
         }
-        )}
+        )},
+ 
+    modifyItinerary : async (req, res) => {
+        const { id } = req.params
+        Itinerary.findByIdAndUpdate({idCity : id}, )
     }
+}
 
 
 

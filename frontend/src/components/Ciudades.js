@@ -5,6 +5,7 @@ import  CiudadesFiltradas  from './CiudadesFiltradas'
 import { Preloader } from './Preloader'
 import { connect } from 'react-redux'
 import citiesActions from '../redux/actions/citiesActions'
+import { Footer } from './Footer'
 
 //COMPONENTE PRINCIPAL DE LA PÁGINA "CITIES"
 const Ciudades = (props) => {
@@ -26,15 +27,15 @@ const Ciudades = (props) => {
 //SI EL FILTRO ESTÁ ACTIVADO, DEVUELVE SOLO LA CIUDAD ENCONTRADA, O UN CARTEL QUE DICE QUE NO HAY CIUDADES
    if(filtro.length > 0){
             return(
-        <>
-            <div className="cities">CITIES</div>
-            <div style={{display: 'flex', justifyContent: 'center',}}>
-                <div className="filtro">
-                    <input onChange={filtrado} type="text" name="filtro" autoComplete="off" placeholder="Search city by name"/>
+            <>
+                <div className="cities">CITIES</div>
+                <div style={{display: 'flex', justifyContent: 'center',}}>
+                    <div className="filtro">
+                    <   input onChange={filtrado} type="text" name="filtro" autoComplete="off" placeholder="Search city by name"/>
+                    </div>
                 </div>
-            </div>
-            <CiudadesFiltradas />
-        </>
+                <CiudadesFiltradas />       
+            </>
        )}else{
             if(listaCities.length === 0){
                 return  <Preloader />
@@ -59,6 +60,7 @@ const Ciudades = (props) => {
                                 })
                              }
                             </div>
+                            <Footer />
                         </>
                     )
                 }             

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
 
 const Itinerarios = (props) => {
-console.log(props)
+
     const { actionItineraries, id, itineraries } = props
 
     useEffect(() => {

@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { useEffect } from 'react'
 import citiesActions from '../redux/actions/citiesActions'
 import Itinerarios from './Itinerarios'
+import { Footer } from './Footer'
 
 //COMPONENTE QUE SIRVE PARA FILTRAR CADA UNO DE LOS ITINERARIOS A TRAVES DE LAS PROPS
 
@@ -40,7 +41,8 @@ const Ciudad = (props) => {
                                 </div> 
                             )
                         })
-                    }             
+                    } 
+                    <Footer />            
                  </>                  
         </div>
     )   

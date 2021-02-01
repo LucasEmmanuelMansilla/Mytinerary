@@ -1,4 +1,5 @@
 import Carrusel from "./Carrusel"
+import { Footer } from "./Footer"
 import PortadaInicio from "./PortadaInicio"
 
 
@@ -6,8 +7,9 @@ import PortadaInicio from "./PortadaInicio"
 const Inicio = () => {
     return(
         <>
-        <PortadaInicio />
-        <Carrusel />
+            <PortadaInicio />
+            <Carrusel />
+            <Footer />
         </>
     )
 }
