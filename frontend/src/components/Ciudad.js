@@ -2,32 +2,35 @@
 import { Link } from 'react-router-dom'
 import Header from './Header'
 import { connect } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import citiesActions from '../redux/actions/citiesActions'
+import Itinerarios from './Itinerarios'
 
 //COMPONENTE QUE SIRVE PARA FILTRAR CADA UNO DE LOS ITINERARIOS A TRAVES DE LAS PROPS
 
-const Itinerario = (props) => {
+const Ciudad = (props) => {
 
-    const { cities } = props
+    const { city, actionCity } = props
 
-    const [ciudadIndividual, setCiudadIndividual] = useState([])
     const id = props.match.params.itinerary
-   useEffect(() => {    
-       setCiudadIndividual(cities.filter(city => city._id === id))
-   }, [cities, id])
+   
+   useEffect(() => {  
+    actionCity(id)    
+   }, [id, actionCity])
 
     return (
         <div key="itinerarie">                    
                 <>
                     <Header />
                     {
-                        ciudadIndividual.map(({url, _id}) => {
+                        city.map(({url, _id, name}) => {
                             return(
-                                <div key={_id}style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '80vh'}}>               
-                                    <div className="noItinerario" style={{backgroundImage: `url(${url})`}}>
-                                        <h4 className="sinItinerario">City ​​without itineraries yet. Create yours!</h4>
+                                <div key={_id}style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between',}}>               
+                                    <div className="city" style={{backgroundImage: `url(${url})`}}>
+                                        <h4 className="city">{name}</h4>
                                     </div>
-                                    <div className="noItinerarioBotones" > 
+                                    <Itinerarios id={id}/>
+                                    <div className="itinerarioBotones" > 
                                         <Link to="/" className="navLink ciudad"><i className="fas fa-home"></i>Home</Link>
                                         <Link to="/cities" style={{display: 'flex', alignItems: 'center', margin:'0 0 0 6vw'}} className="navLink ciudad">
                                             <img src="../assets/32170.png" style={{ width: '3vw', margin: '0 1vw 0 0'}} alt="foto"/>
@@ -43,10 +46,14 @@ const Itinerario = (props) => {
     )   
 }
 
+const mapDispatchToProps = {
+    actionCity: citiesActions.cityPorId
+}
+
 const mapStateToProps = state => {
     return{
-        cities : state.cities
+        city: state.citiesR.city
     }
 }
 
-export default connect(mapStateToProps)(Itinerario)
+export default connect(mapStateToProps, mapDispatchToProps)(Ciudad)

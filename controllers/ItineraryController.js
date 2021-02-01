@@ -1,3 +1,4 @@
+const City = require('../models/City')
 const Itinerary = require('../models/Itinerary')
 
 const itineraryController = {
@@ -14,8 +15,20 @@ const itineraryController = {
         .catch(error => {
             return res.json({success: false, error})
         })
+    },
+
+    itineraries:  async (req, res) => {
+        const {id} = req.params
+        Itinerary.find({idCity: id}).populate('idCity')
+            .then(data => {
+            res.json({success: true, respuesta: data})
+        })
+        .catch(error => {
+            return res.json({success: false, error})
+        }
+        )}
     }
-}
+
 
 
 module.exports = itineraryController

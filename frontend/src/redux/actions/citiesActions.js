@@ -1,4 +1,3 @@
-
 const citiesActions =  {
 
     totalCities: () => {
@@ -14,7 +13,15 @@ filterCities: filtro => {
         return async (dispatch, getState) => {
             dispatch({type: 'FILTER_CITIES', payload: filtro})
         }
+    },
+
+    cityPorId: id => {
+        return async(dispatch, getState) => {
+            dispatch({type: 'CITY_POR_ID', payload: id})
+        }
     }
+
 }
+   
  
 export default citiesActions
