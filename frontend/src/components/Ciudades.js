@@ -16,6 +16,7 @@ const Ciudades = (props) => {
    useEffect(() => {
        filtroCities(filtro)
        totalCities()     
+       window.scrollTo(0, 0)
    }, [totalCities, filtro, filtroCities])
    
     const filtrado = (e) => {

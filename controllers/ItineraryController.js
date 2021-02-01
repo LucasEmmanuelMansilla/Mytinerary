@@ -9,7 +9,7 @@ const itineraryController = {
         })
         itineraryAGrabar.save()
         .then( async itineraryGrabado =>   {
-            const itineraryPopulate = await itineraryGrabado.populate('idCity').execPopulate()
+            const itineraryPopulate = await itineraryGrabado
             res.json({success: true, respuesta: itineraryPopulate})
         })
         .catch(error => {
@@ -19,7 +19,7 @@ const itineraryController = {
 
     itineraries:  async (req, res) => {
         const {id} = req.params
-        Itinerary.find({idCity: id}).populate('idCity')
+        Itinerary.find({idCity: id})
             .then(data => {
             res.json({success: true, respuesta: data})
         })
