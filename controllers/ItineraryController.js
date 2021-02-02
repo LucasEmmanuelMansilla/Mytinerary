@@ -1,4 +1,3 @@
-const City = require('../models/City')
 const Itinerary = require('../models/Itinerary')
 
 const itineraryController = {
@@ -19,28 +18,24 @@ const itineraryController = {
 
     itineraries:  async (req, res) => {
         const {id} = req.params
-<<<<<<< HEAD
         Itinerary.find({idCity: id})
-=======
-        Itinerary.find({idCity: id}).populate('idCity')
->>>>>>> 80530cf9c74f467d20ce57c6506f69b295f4b90c
             .then(data => {
             res.json({success: true, respuesta: data})
         })
         .catch(error => {
             return res.json({success: false, error})
         }
-<<<<<<< HEAD
         )},
  
     modifyItinerary : async (req, res) => {
         const { id } = req.params
-        Itinerary.findByIdAndUpdate({idCity : id}, )
-=======
-        )}
->>>>>>> 80530cf9c74f467d20ce57c6506f69b295f4b90c
+      
+        const {newActivities} = req.body
+        Itinerary.findByIdAndUpdate({_id : id}, {activities: newActivities })
+        .then(respuesta => res.json({success: true, respuesta}))
+        .catch(error => res.json({success: false, error}))
     }
-
+}
 
 
 

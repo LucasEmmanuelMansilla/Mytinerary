@@ -5,10 +5,7 @@ import { connect } from 'react-redux'
 import { useEffect } from 'react'
 import citiesActions from '../redux/actions/citiesActions'
 import Itinerarios from './Itinerarios'
-<<<<<<< HEAD:frontend/src/components/Ciudad.js
 import { Footer } from './Footer'
-=======
->>>>>>> 80530cf9c74f467d20ce57c6506f69b295f4b90c:frontend/src/components/ItinerarioIndividual.js
 
 //COMPONENTE QUE SIRVE PARA FILTRAR CADA UNO DE LOS ITINERARIOS A TRAVES DE LAS PROPS
 

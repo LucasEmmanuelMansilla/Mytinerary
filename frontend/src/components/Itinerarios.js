@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
+import { Actividades } from './Actividades';
 
 const Itinerarios = (props) => {
-<<<<<<< HEAD
 
-=======
-console.log(props)
->>>>>>> 80530cf9c74f467d20ce57c6506f69b295f4b90c
     const { actionItineraries, id, itineraries } = props
 
     useEffect(() => {
@@ -21,7 +18,7 @@ console.log(props)
                 <h6>City ​​without itineraries yet. Create yours!</h6>
             </div>
         </div> : 
-        itineraries.map(({itineraryTitle, hashtag, hours, likes, photoUser, price, userItinerary}) => {
+        itineraries.map(({itineraryTitle, hashtag, hours, likes, photoUser, price, userItinerary, activities}) => { 
             return(
                 <div key={itineraryTitle} className="itinerario"> 
                     <p className="tituloItinerario">{itineraryTitle}</p>
@@ -41,11 +38,10 @@ console.log(props)
                                     <div>{Array(price).fill(<i className="fas fa-money-bill-alt" style={{color: '#0E6D14', }}></i>)}</div>                        
                                 </div>                
                             </div>
-                            <div style={{display: 'flex', width: '31vw', justifyContent: 'flex-end'}}>
-                                <button className="botonView btnItinerary">View more</button>   
-                            </div> 
+                           
                         </div>
-                    </div>                               
+                    </div>
+                    <Actividades activities={activities} />                            
                 </div>
             )
         })
