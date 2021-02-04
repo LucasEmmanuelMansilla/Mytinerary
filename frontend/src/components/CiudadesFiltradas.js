@@ -5,19 +5,19 @@ import {connect} from 'react-redux'
 
 const CiudadFiltrada = (props) => {
     
-    const [ciudadEncontrada, setCiudadEncontrada] = useState([])
+    const [ciudadesEncontradas, setCiudadesEncontradas] = useState([])
     const {citiesFiltradas} = props
     useEffect(() => {
-        setCiudadEncontrada(citiesFiltradas)
+        setCiudadesEncontradas(citiesFiltradas)
     }, [citiesFiltradas])
-
-    if(ciudadEncontrada.length === 0){
+ 
+    if(ciudadesEncontradas.length === 0){
         return <CiudadNoEncontrada />
     }else{
         return( 
             <>
                 <div>
-                   {ciudadEncontrada.map(({name, url, _id}) =>{               
+                   {ciudadesEncontradas.map(({name, url, _id}) =>{               
                                return(
                                 <Link to={`/itineraries/${_id}`} key={_id} style={{textDecoration: 'none',}}>
                                     <button className="botonItinerario" style={{backgroundImage: `url(${url})`}}>
@@ -35,7 +35,7 @@ const CiudadFiltrada = (props) => {
 
 const mapStateToProps = state => {
     return {
-        citiesFiltradas: state.citiesR.citiesFiltradas
+        citiesFiltradas: state.citiesR.citiesFiltradas,
     }
 }
 
