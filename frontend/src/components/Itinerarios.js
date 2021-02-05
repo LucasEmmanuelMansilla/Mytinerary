@@ -50,14 +50,16 @@ const Itinerarios = (props) => {
     )
 }
 
-const mapDispatchToProps = {
-    actionItineraries: itinerariesActions.itineraries
-}
-
 const mapStateToProps = state => {
     return {
         itineraries: state.itinerariesR.itineraries
     }
 }
+
+const mapDispatchToProps = {
+    actionItineraries: itinerariesActions.itineraries
+}
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Itinerarios)

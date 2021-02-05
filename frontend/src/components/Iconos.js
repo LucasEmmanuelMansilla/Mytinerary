@@ -1,6 +1,14 @@
 //TODOS LOS ÍCONOS DEL HEADER, INCLUSO EL LOGO
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import usersActions from '../redux/actions/usersActions';
 
-const Iconos = () => {
+const Iconos = (props) => {
+
+const { loggedUser, logout} = props
+
+    const [visible, setVisible] = useState(false)
     return (
         <div className="divLogos">
              <div style={{display: 'flex'}}>
@@ -14,12 +22,29 @@ const Iconos = () => {
                     <img src="../assets/584ac2d03ac3a570f94a666d.png" className="logos" alt="foto"/>
                     <img src="../assets/b1a3fab214230557053ed1c4bf17b46c-logotipo-del-icono-de-twitter-by-vexels.png" className="logos" alt="foto"/>
                 </div>
-                <button style={{border: 'none',height: '6vh', backgroundColor: 'rgba(0, 0, 0, 0)'}}>
+                <button style={{border: 'none',height: '6vh', backgroundColor: 'rgba(0, 0, 0, 0)', width: '5vw',  outline: 'none'}} onClick={() => setVisible(!visible)}>
                         <img src="../assets/descarga.png" alt="foto" style={{width: '3vw'}}/>
+                        {visible && <>
+                                      {loggedUser ? <p onClick={() => logout()} className="navLink" style={{fontSize: '1.5vw', display: 'block', color: 'white'}}>LogOut</p> :
+                                      <>
+                                        <Link to="/login" className="navLink" style={{fontSize: '1.5vw', display: 'block', color: 'white'}}>Login</Link>
+                                        <Link to="/signup" className="navLink" style={{fontSize: '1.5vw', color: 'white'}}>Register</Link>
+                                        </>
+                                        }
+                                    </>}
                 </button>
             </div>
     </div>
     )
 }
 
-export default Iconos
+const mapStateToProps = state => {
+    return {
+        loggedUser: state.usersR.loggedUser
+    }
+}
+const mapDispatchToProps = {
+    logout: usersActions.logoutUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Iconos)

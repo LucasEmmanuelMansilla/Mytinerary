@@ -5,6 +5,7 @@ html * {
     font-family: 'Fjalla One', sans-serif
 }
 
+
 /* ICONOS HEADER*/
 
 .tituloPrincipal{
@@ -212,7 +213,6 @@ h2.subtituloCarrusel {
 
 }
 
-
 /* FILTRO */
 
 input {
@@ -221,7 +221,6 @@ input {
     background-color: rgba(16, 211, 218, 0.349);
     width: 50vw;
     height: 7vh;
-    margin-left: 5vw;
     font-size: 1.5vw;
     border-radius: 2vw;
     outline:none !important;
@@ -230,8 +229,6 @@ input {
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
 }
-
-
 
 /* ITINERARIO INDIVIDUAL */
 
@@ -435,3 +432,5 @@ div.prueba p {
     margin: 2vh 0;
     font-size: 1.5vw;
 }
+
+

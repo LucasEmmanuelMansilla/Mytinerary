@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { modelName } = require('./Itinerary')
 
 const userSchema = new mongoose.Schema({
     userName: String,
@@ -7,7 +6,8 @@ const userSchema = new mongoose.Schema({
     name: String,
     lastName: String,
     country: String,
-    profilePic: String
+    profilePic: String,
+    rol: {type: String, default: "noAdmin"}
 })
 
 
