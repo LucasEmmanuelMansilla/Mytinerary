@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import Header from './Header'
 
 const LogIn = (props) => {
-    const { loguearUser, users } = props
+    const { loguearUser } = props
 
     const [error, setError] = useState("")
     const [usuarioALoguear, setUsuarioALoguear] = useState({
@@ -57,7 +57,7 @@ const LogIn = (props) => {
 
 const mapStateToProps = state => {
     return {
-        users: state.usersR.loggedUser
+        users: state.userR.loggedUser
     }
 }
 

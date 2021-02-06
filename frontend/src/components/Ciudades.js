@@ -48,7 +48,7 @@ const Ciudades = (props) => {
                              }
                             </div>
                             <Footer />  
-                        </> : <CiudadesFiltradas filtro={filtro}/> 
+                        </> : <CiudadesFiltradas /> 
                 }  
             </>
                 )

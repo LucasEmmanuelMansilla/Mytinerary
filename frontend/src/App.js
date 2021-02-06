@@ -4,6 +4,7 @@ import  Ciudad  from './components/Ciudad'
 import CiudadesARenderizar from './components/CiudadesARenderizar';
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
+import { connect } from 'react-redux';
 
 const App=  () => {
     return ( 
@@ -22,4 +23,10 @@ const App=  () => {
     )
     }
 
-    export default App
+const mapStateToProps = state => {
+    return{
+        loggedUser: state.userR.loggedUser
+    }
+}
+
+    export default connect(mapStateToProps)(App)

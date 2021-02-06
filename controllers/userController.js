@@ -5,15 +5,7 @@ const userController = {
     addUser: async (req, res) => {
         var errores = []
         const {userName, password, name, lastName, country, profilePic} = req.body
-        // if(userName.split('@').length !== 2){
-        //     errores.push('Utilice un formato de mail válido')
-        // }
-        // if(userName.split('@')[0].split('.').length < 2 || userName.split('@')[0].split('.').length > 3){
-        //     errores.push('Utilice un formato de mail válido')
-        // }
-        if(password.length < 6){
-            errores.push('El password debe tener más de 6 dígitos')
-        }
+        
         const usuarioExistente = await User.findOne({userName : userName})
         if(usuarioExistente){
             errores.push('El usuario ya existe')
@@ -39,8 +31,10 @@ const userController = {
     },
 
     logInUser: async (req, res) => {
-        var userName, password = req.body
-        const usuarioExistente = await User.findOne({userName: userName})
+        
+        var {userName, password} = req.body
+        const usuarioExistente = await User.findOne({userName:userName})
+    
         if(!usuarioExistente){
             return res.json({success: false, respuesta: 'Usuario y/o contraseña incorrectos'})
         }
@@ -49,6 +43,7 @@ const userController = {
             return res.json({success: false, respuesta: 'Usuario y/o contraseña incorrectos'})
         }
 
+        
         return res.json({success: true, respuesta: usuarioExistente})
     }
 

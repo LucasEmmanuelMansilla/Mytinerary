@@ -40,7 +40,7 @@ const { loggedUser, logout} = props
 
 const mapStateToProps = state => {
     return {
-        loggedUser: state.usersR.loggedUser
+        loggedUser: state.userR.loggedUser
     }
 }
 const mapDispatchToProps = {

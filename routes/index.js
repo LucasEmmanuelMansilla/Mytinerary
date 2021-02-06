@@ -3,6 +3,7 @@ const router = express.Router()
 const cityController = require('../controllers/cityController.js')
 const itineraryController = require('../controllers/ItineraryController.js')
 const userController = require('../controllers/userController.js')
+const validator = require('../controllers/validator')
 
 
 
@@ -19,7 +20,7 @@ router.route('/itineraries/:id')
 
 
 router.route('/user/signup')
-.post(userController.addUser)
+.post(validator.validateAccount, userController.addUser)
 
 router.route('/user/login')
 .post(userController.logInUser)

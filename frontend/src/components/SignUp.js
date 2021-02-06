@@ -5,9 +5,8 @@ import Swal from 'sweetalert2';
 import Header from '../components/Header'
 
 const SignUp = (props) => {
-    const { agregarUser, users } = props
-   console.log(props)
-    console.log(users)
+    const { agregarUser } = props
+
     const [errores, setErrores] = useState([])
     const [nuevoUsuario, setNuevoUsuario] = useState({
         userName: '', 
@@ -36,13 +35,14 @@ const SignUp = (props) => {
         setErrores([])
         const respuesta = await agregarUser(nuevoUsuario)
         if(respuesta && !respuesta.success){
-            setErrores(respuesta.errores)
+            setErrores(respuesta.errores.details)
+            
         }else{
             Swal.fire('Usuario nuevo grabado')
             //window.location.href= '/'
         }
     }
-  
+  console.log(errores.map(error => error.message))
     return (
         <>
         <Header />
@@ -56,7 +56,7 @@ const SignUp = (props) => {
             <input type="text" name="profilePic" placeholder="Add a photo" autoComplete="off" onChange={capturarUsuario}/>
             <button className="btnItinerary" onClick={enviarUsuario}>Create Account</button>
             <div>
-                {errores.map(error => <p key={error}>{error}</p>)}
+                {errores.map(error => <p key={error.message}>{error.message}</p>)}
             </div>         
         </div>
        </>
@@ -66,7 +66,7 @@ const SignUp = (props) => {
 
 const mapStateToProps = state => {
     return {
-        users: state.usersR.loggedUser
+        users: state.userR.loggedUser
     }
 }
 

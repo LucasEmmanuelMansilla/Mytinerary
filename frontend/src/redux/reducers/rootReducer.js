@@ -1,12 +1,13 @@
 import { combineReducers } from "redux";
 import { citiesReducer } from "./citiesReducer";
 import { itinerariesReducer } from "./itinerariesReducer";
-import { usersReducer } from "./usersReducer";
+import { userReducer } from './userReducer';
+
 
 const rootReducer = combineReducers({
     citiesR: citiesReducer,
     itinerariesR: itinerariesReducer,
-    usersR: usersReducer
+    userR: userReducer
 })
 
 

@@ -2,9 +2,9 @@ const initialState = {
     loggedUser: null
 }
 
-export const usersReducer = (state = initialState, action) =>{
+export const userReducer = (state = initialState, action) =>{
     switch (action.type){
-        case 'NUEVO_USER':
+        case 'LOG_USER':
             return{
                 ...state,
                 loggedUser: action.payload
@@ -14,11 +14,7 @@ export const usersReducer = (state = initialState, action) =>{
                 ...state,
                 loggedUser: null
             }
-        case 'LOG_IN':
-            return{
-                ...state,
-                loggedUser: action.payload.respuesta
-            }
+      
             default: 
             return state
     }

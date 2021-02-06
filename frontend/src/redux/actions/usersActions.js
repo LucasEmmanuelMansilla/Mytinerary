@@ -7,8 +7,8 @@ const usersActions = {
             if(!nuevoUser.data.success){
                 return nuevoUser.data
             }
-
-            dispatch({type: 'NUEVO_USER', payload: nuevoUser.data.respuesta})
+          
+            dispatch({type: 'LOG_USER', payload: nuevoUser.data.respuesta})
      
         }
     },
@@ -22,9 +22,11 @@ const usersActions = {
         return async (dispatch) => {
             const respuesta = await axios.post('http://localhost:4000/api/user/login', usuario)
             if(!respuesta.data.success){
+           
                 return respuesta.data
-            }
-            dispatch({type: 'LOG_IN', payload: respuesta.data})
+            }     
+            
+            dispatch({type: 'LOG_USER', payload: respuesta.data.respuesta})
         } 
        
     }
