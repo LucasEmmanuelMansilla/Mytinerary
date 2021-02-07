@@ -4,6 +4,8 @@ const cityController = require('../controllers/cityController.js')
 const itineraryController = require('../controllers/ItineraryController.js')
 const userController = require('../controllers/userController.js')
 const validator = require('../controllers/validator')
+const passport = require('passport')
+require('../config/passport')
 
 
 
@@ -17,6 +19,9 @@ router.route('/city')
 router.route('/itineraries/:id')
 .get(itineraryController.itineraries)
 .put(itineraryController.modifyItinerary)
+
+router.route('/user/ls')
+.post(passport.authenticate('jwt', {session: false}), userController.logFromLocalStorage)
 
 
 router.route('/user/signup')

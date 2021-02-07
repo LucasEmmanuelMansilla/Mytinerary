@@ -12,7 +12,7 @@ const LogIn = (props) => {
         userName: '',
         password: '',
     })
-    
+ 
     const capturarUsuario = e => {
         const propiedad = e.target.name
         const valor = e.target.value

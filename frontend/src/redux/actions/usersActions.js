@@ -7,9 +7,8 @@ const usersActions = {
             if(!nuevoUser.data.success){
                 return nuevoUser.data
             }
-          
-            dispatch({type: 'LOG_USER', payload: nuevoUser.data.respuesta})
-     
+            console.log(nuevoUser)
+            dispatch({type: 'LOG_USER', payload: nuevoUser.data.respuesta})  
         }
     },
 
@@ -27,8 +26,25 @@ const usersActions = {
             }     
             
             dispatch({type: 'LOG_USER', payload: respuesta.data.respuesta})
-        } 
-       
+        }      
+    },
+    logFromLocalStorage: (token) => {
+        return async (dispatch) => {
+            try{
+                const respuesta = await axios.post('http://localhost:4000/api/user/ls', {token}, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                dispatch({type: 'LOG_USER', payload: {repuesta: token}})
+            }catch(error){
+                if(error.respuesta.status === 401){
+                   alert("Acción no válida")
+                }
+            }
+            
+            
+        }
     }
 }
 

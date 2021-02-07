@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const bcryptjs = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const userController = {
     addUser: async (req, res) => {
@@ -22,11 +23,13 @@ const userController = {
                 profilePic
             })
             var userSaved = await userSave.save()
+            var token = jwt.sign({...userSaved}, process.env.CLAVE_TOKEN, {})
         }
         
      return res.json({success: errores.length === 0 ? true : false,
                         errores: errores,
-                        respuesta: userSaved})
+                        respuesta: errores.length === 0 && {token, name: userSaved.name, profilePic: userSaved.profilePic}
+                    })
         
     },
 
@@ -42,9 +45,13 @@ const userController = {
         if(!passwordCompare){
             return res.json({success: false, respuesta: 'Usuario y/o contraseña incorrectos'})
         }
-
+        var token = jwt.sign({...usuarioExistente},process.env.CLAVE_TOKEN, {})
         
-        return res.json({success: true, respuesta: usuarioExistente})
+        return res.json({success: true, respuesta: {token, name: usuarioExistente.name, profilePic: usuarioExistente.profilePic}})
+    },
+
+    logFromLocalStorage: (req, res) => {
+        
     }
 
 }
