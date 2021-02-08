@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 export const Actividades = (props) => {
-
+    //CARGA LAS ACTIVIDADES DE LOS ITINERARIOS
     const [visible, setVisible] = useState(false)
 
     const { activities } = props

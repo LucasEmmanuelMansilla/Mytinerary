@@ -6,10 +6,13 @@ import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import { connect } from 'react-redux';
 import usersActions from './redux/actions/usersActions';
+import { useState } from 'react';
 
 const App=  (props) => {
-    
-    const {loggedUser, logFromLocalStorage} = props 
+    //VARIABLE DE ESTADO QUE RECOMENDÓ FER PARA RERENDERIZAR APP Y NO QUEDAR BUGUEADO CUANDO ALGUIEN TOCA COSAS DEL LOCALSTORAGE MANUALMENTE
+    const [recarga, setRecarga] = useState(false)
+    const {loggedUser, logFromLocalStorage} = props
+    //RUTAS DIFERENTES PARA USUARIOS LOGUEADOS Y NO LOGUEADOS 
     if(loggedUser){
         var routes = 
         <Switch>
@@ -18,7 +21,11 @@ const App=  (props) => {
             <Redirect to="/" />
         </Switch>
     }else if(localStorage.getItem('token')){
-        logFromLocalStorage(localStorage.getItem('name'), localStorage.getItem('token'), localStorage.getItem('profilePic'))
+        //SI EXISTE UN TOKEN EN LOCALSTORAGE, EJECUTA UNA ACTION, QUE ENVÍA EL TOKEN AL BACK DONDE PASSPORT LA EVALUA
+        logFromLocalStorage(localStorage.getItem('token'))
+        .then(respuesta => {
+            if(respuesta === false) setRecarga(!recarga)
+        })
     } else{
         var routes = 
         <Switch> 

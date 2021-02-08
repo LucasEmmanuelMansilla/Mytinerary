@@ -11,7 +11,7 @@ module.exports = passport.use(new jwtStrategy({
     secretOrKey: process.env.CLAVE_TOKEN
 }, 
 (payload, done) => {
-    User.findById(payload.doc._id)
+    User.findById(payload._doc._id)
     .then(usuario => {
         if(!usuario){
             return done(null, false)

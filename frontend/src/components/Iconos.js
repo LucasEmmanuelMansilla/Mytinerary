@@ -25,7 +25,7 @@ const { loggedUser, logout} = props
                 <button style={{border: 'none',height: '6vh', backgroundColor: 'rgba(0, 0, 0, 0)', width: '5vw',  outline: 'none'}} onClick={() => setVisible(!visible)}>
                        {loggedUser ? <img src={loggedUser.profilePic} alt="foto" style={{width: '5vw'}}/> : <img src="../assets/descarga.png" alt="foto" style={{width: '3vw'}}/> } 
                         {visible && <>
-                                      {loggedUser ? <p onClick={() => logout()} className="navLink" style={{fontSize: '1.5vw', display: 'block', color: 'white'}}>LogOut, {loggedUser.name}</p> :
+                                      {loggedUser ? <div type='button' onClick={() => logout()} className="navLink" style={{fontSize: '1.5vw', display: 'block', color: 'white', backgroundColor: 'blueviolet'}}>LogOut, {loggedUser.name}</div> :
                                       <>
                                         <Link to="/login" className="navLink" style={{fontSize: '1.5vw', display: 'block', color: 'white'}}>Login</Link>
                                         <Link to="/signup" className="navLink" style={{fontSize: '1.5vw', color: 'white'}}>Register</Link>
