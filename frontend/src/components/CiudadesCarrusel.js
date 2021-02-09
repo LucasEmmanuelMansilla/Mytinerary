@@ -5,7 +5,7 @@ const CiudadesCarrusel = ({ciudades}) =>{
         return(
         ciudades.map(slides => {
             const ciudad = require(`../assets/${slides.url}`)
-         
+     
             return (           
                         <div key={slides.id} style={{
                                     backgroundImage: `url(${ciudad.default})`,

@@ -23,6 +23,8 @@ router.route('/itineraries/:id')
 router.route('/user/ls')
 .post(passport.authenticate('jwt', {session: false}), userController.logFromLocalStorage)
 
+router.route('/itineraries/comments')
+.post(itineraryController.addComment)
 
 router.route('/user/signup')
 .post(validator.validateAccount, userController.addUser)

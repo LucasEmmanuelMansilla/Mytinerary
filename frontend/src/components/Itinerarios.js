@@ -4,7 +4,7 @@ import itinerariesActions from '../redux/actions/itinerariesActions';
 import { Actividades } from './Actividades';
 
 const Itinerarios = (props) => {
-
+   
     const { actionItineraries, id, itineraries } = props
 
     useEffect(() => {
@@ -18,7 +18,8 @@ const Itinerarios = (props) => {
                 <h6>City ​​without itineraries yet. Create yours!</h6>
             </div>
         </div> : 
-        itineraries.map(({itineraryTitle, hashtag, hours, likes, photoUser, price, userItinerary, activities}) => { 
+        itineraries.map(({itineraryTitle, hashtag, hours, likes, photoUser, price, userItinerary, activities, comments, _id}) => { 
+           
             return(
                 <div key={itineraryTitle} className="itinerario"> 
                     <p className="tituloItinerario">{itineraryTitle}</p>
@@ -41,7 +42,7 @@ const Itinerarios = (props) => {
                            
                         </div>
                     </div>
-                    <Actividades activities={activities} />                            
+                    <Actividades activities={activities} comments={comments} id={_id} />                     
                 </div>
             )
         })

@@ -1,3 +1,4 @@
+const { json } = require('express')
 const Itinerary = require('../models/Itinerary')
 
 const itineraryController = {
@@ -34,6 +35,17 @@ const itineraryController = {
         Itinerary.findByIdAndUpdate({_id : id}, {activities: newActivities })
         .then(respuesta => res.json({success: true, respuesta}))
         .catch(error => res.json({success: false, error}))
+    },
+    addComment: async (req, res) => {
+        Itinerary.updateOne(
+            {_id: req.body.id},
+            { $push : {comments: {comment: req.body.comment, name: req.body.name, commentPic: req.body.commentPic}}}     
+        )
+        .then(respuesta => {
+            res.json({success: true, respuesta})
+        })
+        .catch(error => {res.json({success: false, error})})
+        
     }
 }
 

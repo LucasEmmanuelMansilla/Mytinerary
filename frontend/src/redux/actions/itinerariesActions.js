@@ -8,6 +8,12 @@ const itinerariesActions = {
         
         dispatch({type:'ITINERARIES', payload: respuestaAPI.data.respuesta})
     }
+    },
+    comments: comment => {
+        return async(dispatch) => {
+            const comentario = await axios.post('http://localhost:4000/api/itineraries/comments', comment)
+            dispatch({type: 'ITINERARIES'})
+        }
     }
 
 }

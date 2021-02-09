@@ -85,7 +85,7 @@ const SignUp = (props) => {
             }
         }
     }
-   
+
     return (
         <>
         <Header />
