@@ -70,8 +70,8 @@ const Comentarios = (props) => {
                     <p key={comment._id}>{comment.userComment} says: {comment.comment}</p>}                
                     {loggedUser && loggedUser.profilePic === comment.commentPic && 
                     <>
-                        <button style={{margin:'0 1vw', outline: 'none', border: 'none'}} onClick={borrarComentario}><i id={comment._id} className="fas fa-trash-alt" ></i></button>
-                        <button style={{margin:'0 1vw', outline: 'none', border: 'none'}} onClick={() => setVisible(!visible)}><i className="fas fa-edit"></i></button> 
+                        <button style={{margin:'0 1vw', outline: 'none', border: 'none', backgroundColor: 'white'}} onClick={borrarComentario}><i id={comment._id} className="fas fa-trash-alt" ></i></button>
+                        <button style={{margin:'0 1vw', outline: 'none', border: 'none', backgroundColor: 'white'}} onClick={() => setVisible(!visible)}><i className="fas fa-edit"></i></button> 
                     </>}                
                 </div>     
             )}</div>

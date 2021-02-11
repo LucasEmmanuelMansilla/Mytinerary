@@ -10,7 +10,7 @@ export const Actividades = (props) => {
         <>         
             { visible && 
             <> 
-            <div className="activities">             
+            <div className={activities.length > 0 && "activities"}>             
                 {activities.map(({imageActivity, titleActivity, _id}) => {            
                     return(                    
                         <>

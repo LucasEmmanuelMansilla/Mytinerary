@@ -11,9 +11,6 @@ const Itinerarios = (props) => {
        window.scrollTo(0, 0)
     }, [])
    
-   
-   
-
     return (
         <div>
            {itineraries.length === 0 ? <div>
