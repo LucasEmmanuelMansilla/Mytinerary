@@ -23,9 +23,9 @@ const { loggedUser, logout} = props
                     <img src="../assets/b1a3fab214230557053ed1c4bf17b46c-logotipo-del-icono-de-twitter-by-vexels.png" className="logos" alt="foto"/>
                 </div>
                 <button style={{border: 'none',height: '6vh', backgroundColor: 'rgba(0, 0, 0, 0)', width: '5vw',  outline: 'none'}} onClick={() => setVisible(!visible)}>
-                       {loggedUser ? <img src={loggedUser.profilePic} alt="foto" style={{width: '5vw'}}/> : <img src="../assets/descarga.png" alt="foto" style={{width: '3vw'}}/> } 
+                       {loggedUser ? <img src={loggedUser.profilePic} alt="foto" style={{width: '5vw', borderRadius: '5vw', marginTop: '1vh'}}/> : <img src="../assets/descarga.png" alt="foto" style={{width: '3vw'}}/> } 
                         {visible && <>
-                                      {loggedUser ? <div type='button' onClick={() => logout()} className="navLink" style={{fontSize: '1.5vw', display: 'block', color: 'white', backgroundColor: 'blueviolet'}}>LogOut, {loggedUser.name}</div> :
+                                      {loggedUser ? <div type='button' onClick={() => logout()} className="navLink" style={{fontSize: '1.5vw', display: 'block', color: 'black'}}>LogOut, {loggedUser.name}</div> :
                                       <>
                                         <Link to="/login" className="navLink" style={{fontSize: '1.5vw', display: 'block', color: 'white'}}>Login</Link>
                                         <Link to="/signup" className="navLink" style={{fontSize: '1.5vw', color: 'white'}}>Register</Link>

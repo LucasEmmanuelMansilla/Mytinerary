@@ -1,7 +1,8 @@
 import { set } from "mongoose"
 
 const initialState = {
-    itineraries: []
+    itineraries: [],
+    comments: null
 }
 
 export const itinerariesReducer = (state = initialState, action) =>{
@@ -15,6 +16,10 @@ export const itinerariesReducer = (state = initialState, action) =>{
         case 'LIKE_ITINERARY':
             return{
                 ...state
+            }
+        case 'ADD_COMMENT':
+            return{
+                comments: action.payload
             }
              default: 
             return state

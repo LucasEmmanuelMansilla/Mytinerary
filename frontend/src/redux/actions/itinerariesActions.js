@@ -17,6 +17,7 @@ const itinerariesActions = {
                     Authorization: `Bearer ${comment.token}`
                 }
             })
+            // dispatch({type:'ADD_COMMENT', payload: comentario.data})
         
             if(comentario.data.success === true){
                 const respuesta = await axios.get('http://localhost:4000/api/itineraries/'+comment.idCiudad)
@@ -49,7 +50,7 @@ const itinerariesActions = {
             const comentarioEditado = await axios.put(`http://localhost:4000/api/itinerary/${commentAEditar.itineraryId}`, {commentAEditar})
 
             if(comentarioEditado.data.success === true){
-                const respuesta = await axios.get('http://localhost:4000/api/itineraries/'+commentAEditar.idCity)
+                const respuesta = await axios.get('http://localhost:4000/api/itineraries/'+commentAEditar.idCiudad)
                 dispatch({type:'ITINERARIES', payload: respuesta.data.respuesta})
             } 
         }

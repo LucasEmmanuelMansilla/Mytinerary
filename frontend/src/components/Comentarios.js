@@ -16,13 +16,13 @@ const Comentarios = (props) => {
                token: localStorage.getItem('token'),
                idCiudad
             } 
-        )    
-       
+        )       
     }
 
     const [visible, setVisible] = useState(false)
 
-    const cargarComentario = e => {  
+    const cargarComentario = e => {
+       
         e.preventDefault()
        commentsAction(comentario) 
        document.getElementById('vacio').value = ''
@@ -50,27 +50,32 @@ const Comentarios = (props) => {
         })   
     }
     const editarComentario = e => {
+        setVisible(!visible)
         e.preventDefault()
         editComment(editarComment)
         
     }
     return (
         <div>          
-            <div>{comments.map(comment =>          
+            <div style={{display: 'flex', flexDirection: 'column'}}>{comments.map(comment =>          
                 <div style={{display: 'flex', alignItems: 'center', marginBottom: '2vh'}} key={comment._id}>
-                    <div style={{backgroundImage: `url(${comment.commentPic})`}} className="comentario"></div>{visible ? 
-                    <><input name="newComment" onChange={capturarNewComment} id={comment._id} placeholder="Edit comment"/> 
-                    <button onClick={editarComentario}>Edit comment</button></>: 
+                    <div style={{backgroundImage: `url(${comment.commentPic})`, margin:'0 2vw'}} className="comentario"></div>{
+                    visible ? 
+                    <> 
+                    <input style={{margin:'0 1vw'}} name="newComment" onChange={capturarNewComment} id={comment._id} placeholder="Edit comment"/> 
+                        <button onClick={editarComentario}>Edit comment</button>
+                        
+                       
+                    </>: 
                     <p key={comment._id}>{comment.userComment} says: {comment.comment}</p>}                
                     {loggedUser && loggedUser.profilePic === comment.commentPic && 
                     <>
-                        <button onClick={borrarComentario}><i id={comment._id} className="fas fa-trash-alt" ></i></button>
-                        <button onClick={() => setVisible(!visible)}><i className="fas fa-edit"></i></button> 
-                    </>}
-                    
-                  
+                        <button style={{margin:'0 1vw', outline: 'none', border: 'none'}} onClick={borrarComentario}><i id={comment._id} className="fas fa-trash-alt" ></i></button>
+                        <button style={{margin:'0 1vw', outline: 'none', border: 'none'}} onClick={() => setVisible(!visible)}><i className="fas fa-edit"></i></button> 
+                    </>}                
                 </div>     
             )}</div>
+            
             <div className="inputComentario">
                 <input id="vacio" type="text" name="comment" disabled={!loggedUser && "disabled"} placeholder={!loggedUser ? "You must be logged to comment": "Comment"} onChange={capturarComentario} autoComplete="off" />  
                 <button onClick={loggedUser && cargarComentario} className="comentario"><i className="fas fa-paper-plane comentario"></i></button>

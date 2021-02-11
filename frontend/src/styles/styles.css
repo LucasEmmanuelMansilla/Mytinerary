@@ -490,6 +490,9 @@ div.inputComentario {
 button.comentario {
     border: none;
     font-size: 2vw;
+    outline: none;
+    background-color: white;
+    margin-left: 1vw;
 }
 
 button.likes {
