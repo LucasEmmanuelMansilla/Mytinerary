@@ -9,7 +9,7 @@ const itineraryController = {
         })
         itineraryAGrabar.save()
         .then( async itineraryGrabado =>   {
-            const itineraryPopulate = await itineraryGrabado
+            const itineraryPopulate = itineraryGrabado
             res.json({success: true, respuesta: itineraryPopulate})
         })
         .catch(error => {
@@ -37,16 +37,68 @@ const itineraryController = {
         .catch(error => res.json({success: false, error}))
     },
     addComment: async (req, res) => {
-        Itinerary.updateOne(
-            {_id: req.body.id},
-            { $push : {comments: {comment: req.body.comment, name: req.body.name, commentPic: req.body.commentPic}}}     
+        Itinerary.findOneAndUpdate(
+            {_id: req.body.comment.id},
+            { $push : {comments: {
+                comment: req.body.comment.comment,
+                userComment: req.user.name, 
+                commentPic: req.user.profilePic}}}     
         )
-        .then(respuesta => {
-            res.json({success: true, respuesta})
+        .then( respuesta => {     
+           res.json({success: true, respuesta})
         })
-        .catch(error => {res.json({success: false, error})})
-        
-    }
+        .catch(error => {
+
+            res.json({success: false, error})})
+        },
+
+        deleteComment: async (req, res) => {
+
+            const itineraryId = req.params.itineraryId
+            const commentId = req.params.commentId
+            const borrado = await Itinerary.findOneAndUpdate(
+                {_id : itineraryId},
+                {
+                    $pull: {
+                        comments: { _id: commentId}
+                    }
+                },
+                {new: true})
+                .then( respuesta => {     
+                    res.json({success: true, respuesta: respuesta})
+                 })
+                 .catch(error => {
+         
+                     res.json({success: false, error})})
+        },
+        modifyComment: async (req, res) => {
+
+        const { id } = req.params 
+       
+       const comentario = await Itinerary.findOneAndUpdate(
+            {_id: id, 'comments._id': req.body.commentAEditar.idComment},
+            {$set: {'comments.$.comment': req.body.commentAEditar.newComment}},
+            {new: true}
+          )
+        .then(respuesta => res.json({success: true, respuesta}))
+        .catch(error => res.json({success: false, error}))
+        },
+
+        dislikeItinerary: async (req, res) => {
+
+            const {itineraryId} = req.params
+            Itinerary.findOneAndUpdate({_id : itineraryId}, {$pull: {likes: req.user._id}})
+            .then(respuesta => res.json({success: true, respuesta}))
+            .catch(error => res.json({success: false, error}))
+        },
+
+        likeItinerary: async (req, res) => {
+           
+            const {itineraryId} = req.params
+            Itinerary.findOneAndUpdate({_id : itineraryId}, {$addToSet: {likes: req.user._id}})
+            .then(respuesta => res.json({success: true, respuesta}))
+            .catch(error => res.json({success: false, error}))
+        }
 }
 
 

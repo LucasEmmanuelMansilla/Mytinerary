@@ -53,7 +53,7 @@ const userController = {
     },
     //SI EL USUARIO RECARGA LA PÁGINA Y EL TOKEN ES CORRECTO, DEVUELVE AL FRONT CON LOS MISMOS DATOS QUE RECIBE, SIRVE PARA COMPROBAR SI ALGUIEN TOCA ALGO DEL TOKEN
     logFromLocalStorage: (req, res) => {
-        res.json({success: true, respuesta: {token: req.body.token, name: req.user.name, profilePic: req.user.profilePic}})
+        res.json({success: true, respuesta: {token: req.body.token, name: req.user.name, profilePic: req.user.profilePic, id: req.user._id}})
     }
 
 }

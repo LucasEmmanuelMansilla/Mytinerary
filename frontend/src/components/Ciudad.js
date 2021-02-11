@@ -16,7 +16,8 @@ const Ciudad = (props) => {
     const id = props.match.params.itinerary
    
    useEffect(() => {  
-   setCiudad(cities.filter(city => city._id === id))    
+   setCiudad(cities.filter(city => city._id === id)) 
+   cities.length === 0 && props.history.push('/cities')  
    }, [id,])
 
     return (

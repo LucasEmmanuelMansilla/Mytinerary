@@ -1,16 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
 import { Actividades } from './Actividades';
 
-const Itinerarios = (props) => {
+const Itinerarios = (props) => {  
+    const { actionItineraries, id, itineraries, like, dislike, loggedUser } = props
    
-    const { actionItineraries, id, itineraries } = props
-
     useEffect(() => {
         actionItineraries(id)
        window.scrollTo(0, 0)
     }, [])
+   
+    const likear = async () => {
+        like({itineraryId: props.itineraries[0]._id, token: loggedUser.token,
+        id})
+    }
+
+    const dislikear = async () => {
+        dislike({
+            itineraryId: props.itineraries.map(({_id}) => _id), 
+            token: loggedUser.token,
+        id})
+    }
+   
+
     return (
         <div>
            {itineraries.length === 0 ? <div>
@@ -31,8 +44,14 @@ const Itinerarios = (props) => {
                         <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-around',}}>
                             <div className="datosAdicionales">
                                 <div style={{margin: '0 2vw', width: '50vw'}}>
-                                    <div>{hashtag.map(tag => <span key={tag} style={{marginRight: '1vw', color: 'blue', width: '100%'}}>{tag}</span> )}</div>  
-                                    <p><i className="fas fa-thumbs-up"></i>{likes}</p>                                                              
+                                    <div>{hashtag.map(tag => <span key={tag} style={{marginRight: '1vw', color: 'blue', width: '100%'}}>{tag}</span> )}</div>
+                                    {
+                                    loggedUser ? 
+                                    likes.find(likeUsuario => likeUsuario === loggedUser.id) ? 
+                                    <button className="likes" onClick={dislikear}><i className="fas fa-thumbs-up">{likes.length}</i></button> : 
+                                    <button className="likes" onClick={likear}><i className="far fa-thumbs-up">{likes.length}</i></button> : 
+                                    <button className="likes" onClick={alert("hola")}><i className="far fa-thumbs-up">{likes.length}</i></button> }
+                                                                                                
                                 </div>
                                 <div className="hoursPrice">
                                     <p>Duration {hours}hs</p>
@@ -41,8 +60,8 @@ const Itinerarios = (props) => {
                             </div>
                            
                         </div>
-                    </div>
-                    <Actividades activities={activities} comments={comments} id={_id} />                     
+                    </div> 
+                    <Actividades activities={activities} comments={comments} idCiudad={id} id={_id} />             
                 </div>
             )
         })
@@ -53,12 +72,15 @@ const Itinerarios = (props) => {
 
 const mapStateToProps = state => {
     return {
-        itineraries: state.itinerariesR.itineraries
+        itineraries: state.itinerariesR.itineraries,
+        loggedUser: state.userR.loggedUser
     }
 }
 
 const mapDispatchToProps = {
-    actionItineraries: itinerariesActions.itineraries
+    actionItineraries: itinerariesActions.itineraries,
+    like: itinerariesActions.likeItinerary,
+    dislike: itinerariesActions.dislikeItinerary
 }
 
 

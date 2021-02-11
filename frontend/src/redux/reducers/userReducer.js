@@ -2,13 +2,14 @@ const initialState = {
     loggedUser: null
 }
 
-export const userReducer = (state = initialState, action) =>{
+export const userReducer = (state = initialState, action) =>{ 
     switch (action.type){
         case 'LOG_USER':
             //PERSISTENCIA DE USUARIO CARGANDO DATOS EN LOCALSTORAGE
             localStorage.setItem('name', action.payload.name)
             localStorage.setItem('token', action.payload.token)
             localStorage.setItem('profilePic', action.payload.profilePic)
+           
             
             return{
                 ...state,

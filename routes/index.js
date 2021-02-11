@@ -23,8 +23,20 @@ router.route('/itineraries/:id')
 router.route('/user/ls')
 .post(passport.authenticate('jwt', {session: false}), userController.logFromLocalStorage)
 
+router.route('/itinerary/:itineraryId/:commentId')
+.delete(passport.authenticate('jwt', {session: false}), itineraryController.deleteComment)
+
+router.route('/itinerary/:id')
+.put(itineraryController.modifyComment)
+
+router.route('/itinerary/like/:itineraryId')
+.post(passport.authenticate('jwt', {session: false}), itineraryController.likeItinerary)
+
+router.route('/itinerary/dislike/:itineraryId')
+.post(passport.authenticate('jwt', {session: false}), itineraryController.dislikeItinerary)
+
 router.route('/itineraries/comments')
-.post(itineraryController.addComment)
+.post(passport.authenticate('jwt', {session: false}), itineraryController.addComment)
 
 router.route('/user/signup')
 .post(validator.validateAccount, userController.addUser)

@@ -4,6 +4,7 @@ import usersActions from './../redux/actions/usersActions';
 import GoogleLogin from 'react-google-login'
 import Swal from 'sweetalert2';
 import Header from '../components/Header'
+import { Link } from 'react-router-dom';
 
 const SignUp = (props) => {
     const { agregarUser } = props
@@ -89,7 +90,7 @@ const SignUp = (props) => {
     return (
         <>
         <Header />
-        <div style={{display: 'flex ', flexDirection: 'column', width: '100vw', alignItems: 'center', backgroundColor: 'aquamarine'}}>
+        <div  className="signUp" style={{backgroundImage: 'url("../assets/pexels-photo-2147486.jpeg")'}}>
             <h6>Register</h6>
             <input type="text" name="userName" placeholder="Email" autoComplete="off" onChange={capturarUsuario}/>
             <input type="password" name="password" placeholder="Password" autoComplete="off" onChange={capturarUsuario}/>
@@ -105,6 +106,7 @@ const SignUp = (props) => {
             <input type="text" name="profilePic" placeholder="Add a photo" autoComplete="off" onChange={capturarUsuario}/>
             <button className="btnItinerary" onClick={enviarUsuario}>Create Account</button>
             <GoogleLogin
+                className="google"
                 clientId="70385013439-khieu2v6lposk8k37147t8a5hun6n15j.apps.googleusercontent.com"
                 buttonText="Create Account with Google"
                 onSuccess={responseGoogle}
@@ -114,7 +116,9 @@ const SignUp = (props) => {
                 {errores.map(error => <p key={error.message}>{error}</p>)}
             </div>  
             }
-                   
+            <div>
+                <Link to="/login" className="navLink" style={{color: 'black'}}>Do you already have an account? Log in here</Link>
+            </div>                   
         </div>
        </>
     )

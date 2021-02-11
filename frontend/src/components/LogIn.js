@@ -4,6 +4,7 @@ import usersActions from '../redux/actions/usersActions';
 import Swal from 'sweetalert2';
 import Header from './Header'
 import GoogleLogin from 'react-google-login'
+import { Link } from 'react-router-dom';
 
 
 const LogIn = (props) => {
@@ -61,20 +62,22 @@ const LogIn = (props) => {
     return (
         <>
         <Header />
-        <div style={{display: 'flex ', flexDirection: 'column', width: '100vw', alignItems: 'center', backgroundColor: 'aquamarine'}}>
-            <h6>Register</h6>
+        <div className="logIn" style={{backgroundImage: 'url("../assets/pexels-photo-413960.jpeg")'}}>
+            <h6>Log In</h6>
             <input type="text" name="userName" placeholder="Email" autoComplete="off" onChange={capturarUsuario}/>
             <input type="password" name="password" placeholder="Password" autoComplete="off" onChange={capturarUsuario}/>
             <button className="btnItinerary" onClick={loguearUsuario}>Log In</button>
+            <div className="errores">
+              {error}
+            </div>
             <GoogleLogin
                 clientId="70385013439-khieu2v6lposk8k37147t8a5hun6n15j.apps.googleusercontent.com"
                 buttonText="Login with Google"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
                 cookiePolicy={'single_host_origin'}/>
-            <div>
-              {error}
-            </div>         
+                
+            <Link to="/signup" className="navLink">Don't have account? Create one here!</Link>     
         </div>
        </>
     )
