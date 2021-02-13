@@ -2,7 +2,6 @@ import { set } from "mongoose"
 
 const initialState = {
     itineraries: [],
-    comments: null
 }
 
 export const itinerariesReducer = (state = initialState, action) =>{
@@ -19,7 +18,7 @@ export const itinerariesReducer = (state = initialState, action) =>{
             }
         case 'ADD_COMMENT':
             return{
-                comments: action.payload
+                itineraries: action.payload
             }
              default: 
             return state

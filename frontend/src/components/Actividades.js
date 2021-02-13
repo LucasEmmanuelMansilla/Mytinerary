@@ -5,6 +5,7 @@ export const Actividades = (props) => {
     //CARGA LAS ACTIVIDADES DE LOS ITINERARIOS
     const [visible, setVisible] = useState(false)
     const { activities, id, idCiudad, comments } = props
+   
 
     return (
         <>         
@@ -26,6 +27,7 @@ export const Actividades = (props) => {
             <Comentarios id={id} comments={comments} idCiudad={idCiudad} />
             </>}  
             <div style={{display: 'flex', justifyContent: 'center', margin: '2vh 0'}}>
+  
                 <button className="botonView btnItinerary" onClick={() => setVisible(!visible)}>{!visible ? 'View More' : 'View Less'}</button>
             </div>               
         </>

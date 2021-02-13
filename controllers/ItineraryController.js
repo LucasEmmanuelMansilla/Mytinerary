@@ -1,4 +1,3 @@
-const { json } = require('express')
 const Itinerary = require('../models/Itinerary')
 
 const itineraryController = {
@@ -53,7 +52,6 @@ const itineraryController = {
         },
 
         deleteComment: async (req, res) => {
-
             const itineraryId = req.params.itineraryId
             const commentId = req.params.commentId
             const borrado = await Itinerary.findOneAndUpdate(
@@ -75,7 +73,7 @@ const itineraryController = {
 
         const { id } = req.params 
        
-       const comentario = await Itinerary.findOneAndUpdate(
+        const comentario = await Itinerary.findOneAndUpdate(
             {_id: id, 'comments._id': req.body.commentAEditar.idComment},
             {$set: {'comments.$.comment': req.body.commentAEditar.newComment}},
             {new: true}
@@ -86,7 +84,7 @@ const itineraryController = {
 
         dislikeItinerary: async (req, res) => {
 
-            const {itineraryId} = req.params
+            const {itineraryId} = req.body
             Itinerary.findOneAndUpdate({_id : itineraryId}, {$pull: {likes: req.user._id}})
             .then(respuesta => res.json({success: true, respuesta}))
             .catch(error => res.json({success: false, error}))
@@ -94,8 +92,10 @@ const itineraryController = {
 
         likeItinerary: async (req, res) => {
            
-            const {itineraryId} = req.params
-            Itinerary.findOneAndUpdate({_id : itineraryId}, {$addToSet: {likes: req.user._id}})
+            const {itineraryId} = req.body
+            Itinerary.findOneAndUpdate({_id : itineraryId}, {
+                $addToSet: {likes: req.user._id}
+            })
             .then(respuesta => res.json({success: true, respuesta}))
             .catch(error => res.json({success: false, error}))
         }

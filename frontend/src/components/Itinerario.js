@@ -7,6 +7,8 @@ import itinerariesActions from './../redux/actions/itinerariesActions';
 const Itinerario = (props) => {
 
     const { like, dislike, loggedUser, id, itineraryTitle, hashtag, hours, likes, photoUser, price, userItinerary, activities, comments, _id } = props
+
+    
     const likear = async () => {
         like({itineraryId: _id, token: loggedUser.token,
         id})
@@ -35,9 +37,9 @@ const Itinerario = (props) => {
                                     {
                                     loggedUser ? 
                                     likes.find(likeUsuario => likeUsuario === loggedUser.id) ? 
-                                    <button className="likes" onClick={dislikear}><i className="fas fa-thumbs-up">{likes.length}</i></button> : 
-                                    <button className="likes" onClick={likear}><i className="far fa-thumbs-up">{likes.length}</i></button> : 
-                                    <button className="likes"><i className="far fa-thumbs-up">{likes.length}</i></button> 
+                                    <button className="likes" onClick={dislikear}><i className="fas fa-thumbs-up"><p style={{marginRight: '2vw'}}>{likes.length}</p></i></button> : 
+                                    <button className="likes" onClick={likear}><i className="far fa-thumbs-up"><p style={{marginRight: '2vw'}}>{likes.length}</p></i></button> : 
+                                    <button className="likes"><i className="far fa-thumbs-up"><p style={{marginRight: '2vw'}}>{likes.length}</p></i></button> 
                                     }                                                                       
                                 </div>
                                 <div className="hoursPrice">

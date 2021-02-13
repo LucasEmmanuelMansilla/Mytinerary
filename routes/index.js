@@ -29,11 +29,11 @@ router.route('/itinerary/:itineraryId/:commentId')
 router.route('/itinerary/:id')
 .put(itineraryController.modifyComment)
 
-router.route('/itinerary/like/:itineraryId')
-.post(passport.authenticate('jwt', {session: false}), itineraryController.likeItinerary)
+router.route('/like/')
+.put(passport.authenticate('jwt', {session: false}), itineraryController.likeItinerary)
 
-router.route('/itinerary/dislike/:itineraryId')
-.post(passport.authenticate('jwt', {session: false}), itineraryController.dislikeItinerary)
+router.route('/dislike/')
+.put(passport.authenticate('jwt', {session: false}), itineraryController.dislikeItinerary)
 
 router.route('/itineraries/comments')
 .post(passport.authenticate('jwt', {session: false}), itineraryController.addComment)

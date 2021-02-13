@@ -215,7 +215,7 @@ h2.subtituloCarrusel {
 
 /* FILTRO */
 
-input {
+input, .apiCiudades {
     text-align: center;
     border: none;
     background-color: rgba(16, 211, 218, 0.349);
@@ -440,10 +440,28 @@ div.signUp {
     height: 100vh;
     background-position: 0 50%;
 }
-div.signUp input, div.logIn input {
+div.signUp input, div.logIn input, .apiCiudades  {
     background-color: rgba(46, 103, 141, 0.473);
     margin-bottom: 2vw;
 }
+
+.apiCiudades {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.apiCiudades select {
+    border: none;
+    margin-left: 2vw;
+    color: black;
+    height: 5vh;
+    background-color: rgba(46, 103, 141, 0.753);
+}
+
+.apiCiudades option {
+    border: none;
+}
+
 
 
 ::-webkit-input-placeholder {
@@ -472,7 +490,7 @@ div.errores {
     margin: 3vh 0;
 }
 
-div.comentario {
+div.fotoComentario {
     width: 5vw;
     height: 9vh;
     background-size: cover;
@@ -495,9 +513,24 @@ button.comentario {
     margin-left: 1vw;
 }
 
+div.comentario {
+    width: 50vw;
+    border: solid 3px white;
+    border-top-left-radius: 3vw;
+    border-bottom-right-radius: 3vw;
+    background-color: #1db1d6;
+    padding: 2vh 0;
+}
+
 button.likes {
+    width: 5vw;
+    display: flex;
     background-color: white;
     font-size: 1.5vw;
     border: none;
     outline: none;
+}
+button.likes p{
+    margin-left: 2vw;
+    display: inline;
 }

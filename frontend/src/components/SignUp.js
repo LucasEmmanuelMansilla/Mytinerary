@@ -96,7 +96,7 @@ const SignUp = (props) => {
             <input type="password" name="password" placeholder="Password" autoComplete="off" onChange={capturarUsuario}/>
             <input type="text" name="name" placeholder="Name" autoComplete="off" onChange={capturarUsuario}/>
             <input type="text" name="lastName" placeholder="Last name" autoComplete="off" onChange={capturarUsuario}/>
-            <p onChange={capturarUsuario}>Country
+            <p onChange={capturarUsuario} className="apiCiudades">Country
                 <select name="country">             
                     <option selected disabled>--</option>
                     {paises.map(pais => <option key={pais.name}>{pais.name}</option>)}

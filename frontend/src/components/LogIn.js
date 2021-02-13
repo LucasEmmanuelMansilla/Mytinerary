@@ -25,6 +25,7 @@ const LogIn = (props) => {
             [propiedad]: valor
         })
     }
+  
 
     const loguearUsuario = async e => {
         e.preventDefault()
@@ -34,10 +35,12 @@ const LogIn = (props) => {
         }
         setError([])
         const respuesta = await loguearUser(usuarioALoguear)
+         
         if(respuesta && !respuesta.success){
             setError(respuesta.respuesta)
-        }else{
-            Swal.fire('Bienvenido')
+        }else{ 
+             console.log(respuesta)
+            Swal.fire('Welcome ')
     
         }
     }
@@ -50,10 +53,12 @@ const LogIn = (props) => {
                 userName: response.profileObj.email,
                 password: response.googleId+"d",
             })
+            console.log(response)
         if(respuesta && !respuesta.success){
             setError(respuesta.respuesta)
         }else{
-            Swal.fire('Bienvenido')
+            
+            Swal.fire('Welcome '+response.profileObj.givenName)
     
         }
         }

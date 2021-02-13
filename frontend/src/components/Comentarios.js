@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
+import Comentario from "./Comentario";
 
 const Comentarios = (props) => {
     const {comments, id, loggedUser, commentsAction, idCiudad, borrarComment, editComment} = props
@@ -19,61 +20,19 @@ const Comentarios = (props) => {
         )       
     }
 
-    const [visible, setVisible] = useState(false)
-
     const cargarComentario = e => {
-       
+       e.key === 'Enter' && alert('hola')
         e.preventDefault()
-       commentsAction(comentario) 
+        commentsAction(comentario) 
        document.getElementById('vacio').value = ''
           
     }
-    const [editarComment, setEditarComment] = useState({})
 
-    const capturarNewComment = e => {
-        setEditarComment({
-            newComment: e.target.value, 
-            itineraryId: id, 
-            idCiudad, 
-            idComment: e.target.id,
-        })
-    }
-
-    const borrarComentario = e => {
-        e.preventDefault()
-       
-        borrarComment({
-            itineraryId: id,
-            idCity: idCiudad,
-            idComment: e.target.id,
-            token: localStorage.getItem('token')
-        })   
-    }
-    const editarComentario = e => {
-        setVisible(!visible)
-        e.preventDefault()
-        editComment(editarComment)
-        
-    }
     return (
         <div>          
-            <div style={{display: 'flex', flexDirection: 'column'}}>{comments.map(comment =>          
-                <div style={{display: 'flex', alignItems: 'center', marginBottom: '2vh'}} key={comment._id}>
-                    <div style={{backgroundImage: `url(${comment.commentPic})`, margin:'0 2vw'}} className="comentario"></div>{
-                    visible ? 
-                    <> 
-                    <input style={{margin:'0 1vw'}} name="newComment" onChange={capturarNewComment} id={comment._id} placeholder="Edit comment"/> 
-                        <button onClick={editarComentario}>Edit comment</button>
-                        
-                       
-                    </>: 
-                    <p key={comment._id}>{comment.userComment} says: {comment.comment}</p>}                
-                    {loggedUser && loggedUser.profilePic === comment.commentPic && 
-                    <>
-                        <button style={{margin:'0 1vw', outline: 'none', border: 'none', backgroundColor: 'white'}} onClick={borrarComentario}><i id={comment._id} className="fas fa-trash-alt" ></i></button>
-                        <button style={{margin:'0 1vw', outline: 'none', border: 'none', backgroundColor: 'white'}} onClick={() => setVisible(!visible)}><i className="fas fa-edit"></i></button> 
-                    </>}                
-                </div>     
+            <div style={{display: 'flex', flexDirection: 'column', marginTop: '5vw'}}>{
+            comments.map(comment =>    
+                <Comentario comment={comment} id={id} idCiudad={idCiudad} />         
             )}</div>
             
             <div className="inputComentario">
