@@ -36,6 +36,7 @@ const userController = {
     },
 
     logInUser: async (req, res) => {
+        console.log(req.body)
         //COMPRUEBA SI EL USUARIO QUE SE INTENTA LOGUEAR EXISTE
         var {userName, password} = req.body
         const usuarioExistente = await User.findOne({userName:userName})

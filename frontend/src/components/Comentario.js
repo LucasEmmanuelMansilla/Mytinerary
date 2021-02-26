@@ -6,7 +6,6 @@ const Comentario = ({comment, borrarComment, editComment, id, idCiudad, loggedUs
 
     const [visible, setVisible] = useState(false)
 
-    console.log(loggedUser)
     const [editarComment, setEditarComment] = useState({})
 
     const capturarNewComment = e => {
